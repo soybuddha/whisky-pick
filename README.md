@@ -1,9 +1,17 @@
-### Nothing to see here.
+## Tasks
 
-#### Tasks
-- react
-- redux
+#### Complete
+- webpack + hot reloading
+- es2015 linter
+- react + redux
+- redux thunk middleware
+- containers
 - react-router
-- add for testing
-- Code splitting based on react-router
-- webpack
+
+#### Incomplete
+- prop-types
+- testing
+- code splitting on module load
+- image caching
+- service worker
+- deep links

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Home = ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <div className="container">
       <div>WhiskyPick</div>
@@ -9,4 +9,4 @@ const Home = ({ children }) => {
   );
 };
 
-export default Home;
+export default Layout;

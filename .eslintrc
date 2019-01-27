@@ -14,6 +14,9 @@
     "import/prefer-default-export": "off",
     "no-console": "off",
     "no-underscore-dangle": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/destructuring-assignment": [<enabled>, "always", { "ignoreClassFields": "true" }],
+    "react/forbid-prop-types": [0],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prefer-stateless-function": [0]
   }
 }

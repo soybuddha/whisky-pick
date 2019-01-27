@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './components/Home';
-import WhiskyList from './components/whisky/WhiskyList';
+import Layout from './components/Layout';
+import WhiskyList from './components/whisky/WhiskyListContainer';
 import WhiskyDetail from './components/whisky/WhiskyDetail';
 
 function Routes() {
   return (
     <Router>
-      <Home>
+      <Layout>
         <Switch>
           <Route path="/" exact component={WhiskyList} />
           <Route path="/whisky/:distilleryId/:whiskyId" exact component={WhiskyDetail} />
         </Switch>
-      </Home>
+      </Layout>
     </Router>
   );
 }

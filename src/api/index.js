@@ -5,7 +5,7 @@ function getRequest(url) {
 }
 
 function getWhiskies() {
-  return getRequest('../assets/data/whiskies.json');
+  return getRequest('./src/assets/data/whiskies.json');
 }
 
 export default {

@@ -11,8 +11,8 @@ export function fetchWhiskies() {
         });
         return payload;
       })
-      .catch(error => {
-        throw new Error(error);
+      .catch(err => {
+        throw new Error(err);
       });
   };
 }

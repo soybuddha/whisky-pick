@@ -1,2 +1,1 @@
 export const FETCH_WHISKIES = 'FETCH_WHISKIES';
-export const FETCH_OTHER = 'FETCH_OTHER';
