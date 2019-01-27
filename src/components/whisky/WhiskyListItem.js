@@ -12,7 +12,12 @@ class WhiskyListItem extends React.PureComponent {
         to={`/whisky/${slugify(whisky.brand)}/${slugify(whisky.name)}`}
         className="whisky-list-item"
       >
-        <h2>{whisky.name}</h2>
+        <img
+          src={`dist/src/assets/images/whiskies/${whisky.id}.jpg`}
+          alt={`${whisky.brand} - ${whisky.name}`}
+        />
+        <h2>{whisky.brand}<h2>
+        <h3>{whisky.name}</h2>
       </Link>
     );
   }

@@ -1,24 +1,16 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-//const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-const VENDOR_LIBS = [
-  'react', 'react-dom', 'react-redux', 'react-router', 'redux', 'redux-thunk'
-];
 
 module.exports = {
   mode: 'none',
   entry: {
-    bundle: './src/index.js',
-    vendor: VENDOR_LIBS
+    bundle: './src/index.js'
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js',
-    //publicPath: 'build/'
+    filename: '[name].[chunkhash].js'
   },
-
   module: {
     rules: [
       {
@@ -26,25 +18,22 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/
       },
-      // {
-      //   use:  ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
-      //   test: /\.css$/
-      // },
       {
         use: ['style-loader', 'css-loader'],
         test: /\.css$/,
       },
-      // {
-      //   use:  [
-      //     {
-      //       loader: 'url-loader',
-      //       options: { limit: 40000 }
-      //     },
-      //     'image-webpack-loader'
-      //   ],
-      //   test: /\.(jpe?g|png|gif|svg)$/
-      // },
-    ],
+      {
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]'
+            }
+          }
+        ],
+        test: /\.(jpe?g|png|gif|svg|pdf|ico)$/
+      }
+    ]
   },
   optimization: {
     splitChunks: {
@@ -52,9 +41,6 @@ module.exports = {
     }
   },
   plugins: [
-    // new MiniCssExtractPlugin({
-    //   filename: 'src/styles/style.css'
-    // }),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
