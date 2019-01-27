@@ -1,20 +1,30 @@
-import { FETCH_WHISKIES } from '../actions';
+import { FETCH_WHISKIES, FETCH_WHISKY_BY_ID } from '../actions';
 
-const INITIAL_STATE = [];
+const INITIAL_STATE = {
+  all: [],
+  selected: {},
+};
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_WHISKIES: {
-      return [
+      return {
         ...state,
-        ...action.payload.data,
-      ];
+        all: [...action.payload.data],
+      };
+    }
+
+    case FETCH_WHISKY_BY_ID: {
+      return {
+        ...state,
+        selected: action.payload,
+      };
     }
 
     default: {
-      return [
+      return {
         ...state,
-      ];
+      };
     }
   }
 };

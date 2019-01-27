@@ -13,11 +13,15 @@ class WhiskyListItem extends React.PureComponent {
         className="whisky-list-item"
       >
         <img
-          src={`dist/src/assets/images/whiskies/${whisky.id}.jpg`}
+          src={`/dist/src/assets/images/whiskies/${whisky.id}.jpg`}
           alt={`${whisky.brand} - ${whisky.name}`}
         />
-        <h2>{whisky.brand}<h2>
-        <h3>{whisky.name}</h2>
+        <h2>{whisky.brand}</h2>
+        <h3>{whisky.name}</h3>
+        <h4>
+          {whisky.average_rating}
+          <span>%</span>
+        </h4>
       </Link>
     );
   }
@@ -28,7 +32,6 @@ WhiskyListItem.propTypes = {
     average_rating: number,
     brand: string,
     id: string,
-    image_url: string,
     name: string,
   }).isRequired,
 };

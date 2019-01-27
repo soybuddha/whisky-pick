@@ -17,12 +17,12 @@ class WhiskyListContainer extends React.Component {
   }
 
   render() {
-    const { whiskies } = this.props;
+    const { allWhiskies } = this.props;
 
     return (
       <WhiskyList
         isLoading={this.state.isLoading}
-        whiskies={whiskies}
+        whiskies={allWhiskies}
       />
     );
   }
@@ -30,12 +30,12 @@ class WhiskyListContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    whiskies: state.whiskies,
+    allWhiskies: state.whiskies.all,
   };
 };
 
 WhiskyListContainer.propTypes = {
-  whiskies: array.isRequired,
+  allWhiskies: array.isRequired,
   fetchWhiskies: func.isRequired,
 };
 
