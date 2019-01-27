@@ -28,17 +28,16 @@ class WhiskyListContainer extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     whiskies: state.whiskies,
   };
-}
+};
 
 WhiskyListContainer.propTypes = {
   whiskies: array.isRequired,
   fetchWhiskies: func.isRequired,
 };
-
 
 export default withRouter(connect(mapStateToProps, {
   fetchWhiskies,
