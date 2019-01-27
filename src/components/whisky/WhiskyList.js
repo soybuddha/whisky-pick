@@ -1,10 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const WhiskyList = () => {
   return (
     <div className="whisky-list">
-      <div>Whisky One</div>
-      <div>Whisky Two</div>
+      <Link to="/whisky/testdistillery/testwhisky">test</Link>
     </div>
   );
 };
