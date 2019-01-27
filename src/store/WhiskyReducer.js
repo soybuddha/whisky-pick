@@ -1,4 +1,4 @@
-import { FETCH_WHISKIES } from '../actions/types';
+import { FETCH_WHISKIES } from './types';
 
 const INITIAL_STATE = {
   whiskies: [],
