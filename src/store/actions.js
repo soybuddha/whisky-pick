@@ -1,4 +1,4 @@
-import { FETCH_WHISKIES } from './types';
+export const FETCH_WHISKIES = 'FETCH_WHISKIES';
 
 export function fetchWhiskies() {
   return (dispatch, getState, api) => {
