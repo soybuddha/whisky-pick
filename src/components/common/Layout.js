@@ -1,17 +1,19 @@
 import React from 'react';
-import { node } from 'prop-types';
+import { bool, node } from 'prop-types';
 import Header from './Header';
+import Loading from './Loading';
 
-const Layout = ({ children }) => {
+const Layout = ({ isLoading, children }) => {
   return (
-    <div className="container">
+    <section className="container">
       <Header />
-      {children}
-    </div>
+      {(isLoading) ? <Loading /> : children}
+    </section>
   );
 };
 
 Layout.propTypes = {
+  isLoading: bool.isRequired,
   children: node.isRequired,
 };
 

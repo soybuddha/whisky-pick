@@ -4,9 +4,14 @@ import { Link } from 'react-router-dom';
 class Header extends React.PureComponent {
   render() {
     return (
-      <Link to="/">
-        <h1>WhiskyPick</h1>
-      </Link>
+      <header className="header">
+        <Link to="/">
+          <h1>WhiskyPick</h1>
+        </Link>
+        <Link to="/tasters">
+          <p>Tasters</p>
+        </Link>
+      </header>
     );
   }
 }

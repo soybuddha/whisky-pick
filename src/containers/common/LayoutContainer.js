@@ -1,29 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { array, func } from 'prop-types';
+import { func, node } from 'prop-types';
 import { fetchWhiskies } from '../../store/actions';
-import WhiskyList from './WhiskyList';
+import Layout from '../../components/common/Layout';
 
-class WhiskyListContainer extends React.Component {
+class LayoutContainer extends React.Component {
   state = {
     isLoading: true,
   }
 
   componentDidMount() {
     this.props.fetchWhiskies().then(() => {
-      this.setState({ isLoading: false });
+      this.setState({
+        isLoading: false,
+      });
     });
   }
 
   render() {
-    const { allWhiskies } = this.props;
-
     return (
-      <WhiskyList
-        isLoading={this.state.isLoading}
-        whiskies={allWhiskies}
-      />
+      <Layout isLoading={this.state.isLoading}>
+        {this.props.children}
+      </Layout>
     );
   }
 }
@@ -34,11 +33,11 @@ const mapStateToProps = state => {
   };
 };
 
-WhiskyListContainer.propTypes = {
-  allWhiskies: array.isRequired,
+LayoutContainer.propTypes = {
   fetchWhiskies: func.isRequired,
+  children: node.isRequired,
 };
 
 export default withRouter(connect(mapStateToProps, {
   fetchWhiskies,
-})(WhiskyListContainer));
+})(LayoutContainer));

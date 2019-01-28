@@ -5,16 +5,25 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'none',
   entry: {
-    bundle: './src/index.js'
+    bundle: './src/index.js',
+    polyfill: 'babel-polyfill',
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[chunkhash].js',
+    publicPath: '/',
   },
   module: {
     rules: [
       {
-        use: 'babel-loader',
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/env'],
+            }
+          }
+        ],
         test: /\.js$/,
         exclude: /node_modules/
       },

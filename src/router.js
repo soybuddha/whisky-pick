@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Layout from './components/common/Layout';
-import WhiskyList from './components/whisky/WhiskyListContainer';
-import WhiskyDetail from './components/whisky/WhiskyDetailContainer';
+import Layout from './containers/common/LayoutContainer';
+import Loading from './components/common/Loading';
+
+const WhiskyList = React.lazy(() => import('./containers/whisky/WhiskyListContainer'));
+const WhiskyDetail = React.lazy(() => import('./containers/whisky/WhiskyDetailContainer'));
+const TasterList = React.lazy(() => import('./containers/taster/TasterListContainer'));
+const TasterDetail = React.lazy(() => import('./containers/taster/TasterDetailContainer'));
 
 function Routes() {
   return (
     <Router>
       <Layout>
-        <Switch>
-          <Route path="/" exact component={WhiskyList} />
-          <Route path="/whisky/:distilleryId/:whiskyId" exact component={WhiskyDetail} />
-        </Switch>
+        <Suspense fallback={<Loading />}>
+          <Switch>
+            <Route path="/" exact render={(props) => <WhiskyList {...props} />} />
+            <Route path="/whiskies/:distilleryId/:whiskyId" exact render={(props) => <WhiskyDetail {...props} />} />
+            <Route path="/tasters" exact render={(props) => <TasterList {...props} />} />
+            <Route path="/tasters/:tasterId" exact render={(props) => <TasterDetail {...props} />} />
+          </Switch>
+        </Suspense>
       </Layout>
     </Router>
   );

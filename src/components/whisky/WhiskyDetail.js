@@ -1,12 +1,21 @@
 import React from 'react';
-import { bool, object } from 'prop-types';
+import {
+  bool,
+  object,
+  number,
+  shape,
+  string,
+} from 'prop-types';
 import Loading from '../common/Loading';
 
 const WhiskyDetailItem = ({ whisky }) => {
+  const imageSrc = require(`../../assets/images/whiskies/${whisky.id}.jpg`);
+  // const imageSrc = `/dist/src/assets/images/whiskies/${whisky.id}.jpg`;
+
   return (
     <div>
       <img
-        src={`/dist/src/assets/images/whiskies/${whisky.id}.jpg`}
+        src={imageSrc}
         alt={`${whisky.brand} - ${whisky.name}`}
       />
       <h2>{whisky.brand}</h2>
@@ -21,7 +30,12 @@ const WhiskyDetailItem = ({ whisky }) => {
 };
 
 WhiskyDetailItem.propTypes = {
-  whisky: object.isRequired,
+  whisky: shape({
+    average_rating: number,
+    brand: string,
+    id: string,
+    name: string,
+  }).isRequired,
 };
 
 const WhiskyDetail = ({ isLoading, whisky }) => {
