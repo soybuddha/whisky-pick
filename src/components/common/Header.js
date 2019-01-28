@@ -8,9 +8,6 @@ class Header extends React.PureComponent {
         <Link to="/">
           <h1>WhiskyPick</h1>
         </Link>
-        <Link to="/tasters">
-          <p>Tasters</p>
-        </Link>
       </header>
     );
   }
