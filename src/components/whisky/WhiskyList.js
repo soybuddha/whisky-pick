@@ -7,6 +7,7 @@ import {
   string,
 } from 'prop-types';
 import { slugify } from '../../util';
+import Loading from '../common/Loading';
 
 class WhiskyListItem extends React.PureComponent {
   render() {
@@ -43,10 +44,13 @@ WhiskyListItem.propTypes = {
   }).isRequired,
 };
 
-const WhiskyList = ({ whiskies }) => {
+const WhiskyList = ({ isLoading, whiskies }) => {
   return (
     <div className="whisky-list">
-      {whiskies.map(whisky => <WhiskyListItem whisky={whisky} key={whisky.id} />)}
+      {(isLoading)
+        ? <Loading />
+        : whiskies.map(whisky => <WhiskyListItem whisky={whisky} key={whisky.id} />)
+      }
     </div>
   );
 };

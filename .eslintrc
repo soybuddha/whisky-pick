@@ -12,6 +12,8 @@
     "quotes": ["error", "single"],
     "comma-dangle": ["error", "always-multiline"],
     "import/prefer-default-export": "off",
+    "import/no-dynamic-require": "off",
+    "global-require": "off",
     "no-console": "off",
     "no-underscore-dangle": "off",
     "react/destructuring-assignment": [<enabled>, "always", { "ignoreClassFields": "true" }],
