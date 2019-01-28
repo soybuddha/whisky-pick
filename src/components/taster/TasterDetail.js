@@ -7,22 +7,22 @@ import {
   string,
 } from 'prop-types';
 import Loading from '../common/Loading';
+import BackButton from '../common/BackButton';
 
 const TasterDetailItem = ({ taster }) => {
   const imageSrc = require(`../../assets/images/tasters/${taster.id}.jpg`);
   // const imageSrc = `/dist/src/assets/images/tasters/${taster.id}.jpg`;
 
   return (
-    <Link
-      to={`/tasters/${taster.id}`}
-      className="taster-list-item"
-    >
+    <div>
       <img
         src={imageSrc}
         alt={`${taster.name}`}
       />
       <h2>{taster.name}</h2>
-    </Link>
+
+      <BackButton>X</BackButton>
+    </div>
   );
 };
 

@@ -7,6 +7,7 @@ import {
   string,
 } from 'prop-types';
 import Loading from '../common/Loading';
+import BackButton from '../common/BackButton';
 
 const WhiskyDetailItem = ({ whisky }) => {
   const imageSrc = require(`../../assets/images/whiskies/${whisky.id}.jpg`);
@@ -25,6 +26,8 @@ const WhiskyDetailItem = ({ whisky }) => {
         <span>%</span>
       </h4>
       <p>{whisky.description}</p>
+
+      <BackButton>X</BackButton>
     </div>
   );
 };
