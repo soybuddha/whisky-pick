@@ -43,4 +43,6 @@ TasterListContainer.propTypes = {
   fetchTasters: func.isRequired,
 };
 
-export default withRouter(connect(mapStateToProps, { fetchTasters })(TasterListContainer));
+export default withRouter(connect(mapStateToProps, {
+  fetchTasters,
+})(TasterListContainer));

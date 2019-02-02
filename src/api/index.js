@@ -17,28 +17,52 @@ async function getWhiskyById(id, whiskies) {
   return whisky;
 }
 
+async function getFavoriteWhiskies() {
+  const response = await getWhiskies();
+  const allWhiskies = response.data;
+
+  const favorites = {
+    bourbon: allWhiskies
+      .filter(w => w.type === 'Bourbon')
+      .sort((a, b) => b.average_rating - a.average_rating)[0],
+    irish: allWhiskies
+      .filter(w => w.type === 'Irish')
+      .sort((a, b) => b.average_rating - a.average_rating)[0],
+    rye: allWhiskies
+      .filter(w => w.type === 'Rye')
+      .sort((a, b) => b.average_rating - a.average_rating)[0],
+    scotch: allWhiskies
+      .filter(w => w.type === 'Scotch')
+      .sort((a, b) => b.average_rating - a.average_rating)[0],
+    whisky: allWhiskies
+      .filter(w => w.type === 'Whisky')
+      .sort((a, b) => b.average_rating - a.average_rating)[0],
+  };
+
+  return favorites;
+}
+
 function getTasters() {
   return getRequest(TASTERS_URL);
 }
 
-async function getTasterById(id, tasters) {
+async function getTasterById(id, tasters, whiskies) {
   const taster = await tasters.find(t => t.id === id);
-  return taster;
-}
 
-async function getTasterWhiskiesById(id, whiskies) {
   const tastersWhiskies = await whiskies.filter(whisky => {
     const allTasterIds = whisky.ratings.map(rating => slugify(rating.name));
     return allTasterIds.includes(id);
   });
 
-  return tastersWhiskies;
+  taster.whiskies = tastersWhiskies;
+
+  return taster;
 }
 
 export default {
   getWhiskies,
   getWhiskyById,
+  getFavoriteWhiskies,
   getTasters,
   getTasterById,
-  getTasterWhiskiesById,
 };

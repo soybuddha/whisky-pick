@@ -33,9 +33,6 @@ TasterDetailItem.propTypes = {
 };
 
 const TasterDetail = ({ isLoading, taster }) => {
-  console.log('taster: ', taster);
-  console.log('isLoading: ', isLoading);
-
   return (
     <div className="taster-detail">
       {(isLoading)

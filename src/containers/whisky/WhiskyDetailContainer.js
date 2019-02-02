@@ -8,7 +8,10 @@ import {
   shape,
   string,
 } from 'prop-types';
-import { fetchWhiskies, fetchWhiskyById } from '../../store/actions';
+import {
+  fetchWhiskies,
+  fetchWhiskyById,
+} from '../../store/actions';
 import WhiskyDetail from '../../components/whisky/WhiskyDetail';
 
 class WhiskyDetailContainer extends React.Component {
@@ -64,4 +67,7 @@ WhiskyDetailContainer.propTypes = {
   fetchWhiskyById: func.isRequired,
 };
 
-export default withRouter(connect(mapStateToProps, { fetchWhiskies, fetchWhiskyById })(WhiskyDetailContainer));
+export default withRouter(connect(mapStateToProps, {
+  fetchWhiskies,
+  fetchWhiskyById,
+})(WhiskyDetailContainer));

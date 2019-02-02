@@ -1,11 +1,13 @@
 import {
   FETCH_WHISKIES,
   FETCH_WHISKY_BY_ID,
+  FETCH_FAVORITE_WHISKIES,
 } from '../actions';
 
 const INITIAL_STATE = {
   all: [],
   selected: {},
+  favorites: {},
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -21,6 +23,13 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         selected: action.payload,
+      };
+    }
+
+    case FETCH_FAVORITE_WHISKIES: {
+      return {
+        ...state,
+        favorites: action.payload,
       };
     }
 

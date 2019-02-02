@@ -1,0 +1,42 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import {
+  number,
+  shape,
+  string,
+} from 'prop-types';
+import { slugify } from '../../util';
+
+const WhiskyListItem = React.memo(({ whisky }) => {
+  const imageSrc = require(`../../assets/images/whiskies/${whisky.id}.jpg`);
+  // const imageSrc = `/dist/src/assets/images/whiskies/${whisky.id}.jpg`;
+
+  return (
+    <Link
+      to={`/whiskies/${slugify(whisky.brand)}/${slugify(whisky.name)}`}
+      className="whisky-list-item"
+    >
+      <img
+        src={imageSrc}
+        alt={`${whisky.brand} - ${whisky.name}`}
+      />
+      <h2>{whisky.brand}</h2>
+      <h3>{whisky.name}</h3>
+      <h4>
+        {whisky.average_rating}
+        <span>%</span>
+      </h4>
+    </Link>
+  );
+});
+
+WhiskyListItem.propTypes = {
+  whisky: shape({
+    average_rating: number,
+    brand: string,
+    id: string,
+    name: string,
+  }).isRequired,
+};
+
+export default WhiskyListItem;
