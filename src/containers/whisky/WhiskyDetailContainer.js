@@ -8,7 +8,7 @@ import {
   shape,
   string,
 } from 'prop-types';
-import { fetchWhiskyById } from '../../store/actions';
+import { fetchWhiskies, fetchWhiskyById } from '../../store/actions';
 import WhiskyDetail from '../../components/whisky/WhiskyDetail';
 
 class WhiskyDetailContainer extends React.Component {
@@ -21,11 +21,17 @@ class WhiskyDetailContainer extends React.Component {
     const id = `${distilleryId}-${whiskyId}`;
     const { allWhiskies } = this.props;
 
-    this.props.fetchWhiskyById(id, allWhiskies).then(() => {
-      this.setState({
-        isLoading: false,
-      });
-    });
+    if (allWhiskies.length) {
+      this.props.fetchWhiskyById(id, allWhiskies).then(() => {
+        this.setState({ isLoading: false });
+      }).catch(err => err);
+    } else {
+      this.props.fetchWhiskies().then(response => {
+        Promise.resolve(this.props.fetchWhiskyById(id, response.data)).then(() => {
+          this.setState({ isLoading: false });
+        });
+      }).catch(err => err);
+    }
   }
 
   render() {
@@ -53,8 +59,9 @@ WhiskyDetailContainer.propTypes = {
     }).isRequired,
   }).isRequired,
   allWhiskies: array.isRequired,
+  fetchWhiskies: func.isRequired,
   selectedWhisky: object.isRequired,
   fetchWhiskyById: func.isRequired,
 };
 
-export default withRouter(connect(mapStateToProps, { fetchWhiskyById })(WhiskyDetailContainer));
+export default withRouter(connect(mapStateToProps, { fetchWhiskies, fetchWhiskyById })(WhiskyDetailContainer));

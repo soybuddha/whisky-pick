@@ -14,11 +14,13 @@
     "import/prefer-default-export": "off",
     "import/no-dynamic-require": "off",
     "global-require": "off",
+    "max-len": "off",
     "no-console": "off",
     "no-underscore-dangle": "off",
     "react/destructuring-assignment": [<enabled>, "always", { "ignoreClassFields": "true" }],
     "react/forbid-prop-types": [0],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/prefer-stateless-function": [0]
+    "react/prefer-stateless-function": [0],
+    "spaced-comment": "off"
   }
 }

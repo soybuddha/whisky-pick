@@ -21,11 +21,11 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/env'],
-            }
-          }
+            },
+          },
         ],
         test: /\.js$/,
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         use: ['style-loader', 'css-loader'],
@@ -36,25 +36,28 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '[path][name].[ext]'
-            }
-          }
+              name: '[path][name].[ext]',
+            },
+          },
         ],
-        test: /\.(jpe?g|png|gif|svg|pdf|ico)$/
-      }
-    ]
+        test: /\.(jpe?g|png|gif|svg|pdf|ico)$/,
+      },
+    ],
   },
   optimization: {
     splitChunks: {
-      chunks: 'all'
-    }
+      chunks: 'all',
+    },
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: 'src/index.html',
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    })
-  ]
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    }),
+  ],
 };
