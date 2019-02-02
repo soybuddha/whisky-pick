@@ -7,9 +7,6 @@ const Header = React.memo(() => {
       <Link to="/">
         <h1>WhiskyPick</h1>
       </Link>
-      <Link to="/tasters">
-        <p>Tasters</p>
-      </Link>
     </header>
   );
 });

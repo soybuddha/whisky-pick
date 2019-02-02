@@ -9,12 +9,12 @@ import {
 import Loading from '../common/Loading';
 import BackButton from '../common/BackButton';
 
-const WhiskyDetailItem = ({ whisky }) => {
+const WhiskyDetailItem = React.memo(({ whisky }) => {
   const imageSrc = require(`../../assets/images/whiskies/${whisky.id}.jpg`);
   // const imageSrc = `/dist/src/assets/images/whiskies/${whisky.id}.jpg`;
 
   return (
-    <div>
+    <>
       <img
         src={imageSrc}
         alt={`${whisky.brand} - ${whisky.name}`}
@@ -28,9 +28,9 @@ const WhiskyDetailItem = ({ whisky }) => {
       <p>{whisky.description}</p>
 
       <BackButton>X</BackButton>
-    </div>
+    </>
   );
-};
+});
 
 WhiskyDetailItem.propTypes = {
   whisky: shape({

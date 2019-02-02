@@ -8,12 +8,12 @@ import {
 import Loading from '../common/Loading';
 import BackButton from '../common/BackButton';
 
-const TasterDetailItem = ({ taster }) => {
+const TasterDetailItem = React.memo(({ taster }) => {
   const imageSrc = require(`../../assets/images/tasters/${taster.id}.jpg`);
   // const imageSrc = `/dist/src/assets/images/tasters/${taster.id}.jpg`;
 
   return (
-    <div>
+    <>
       <img
         src={imageSrc}
         alt={`${taster.name}`}
@@ -21,9 +21,9 @@ const TasterDetailItem = ({ taster }) => {
       <h2>{taster.name}</h2>
 
       <BackButton>X</BackButton>
-    </div>
+    </>
   );
-};
+});
 
 TasterDetailItem.propTypes = {
   taster: shape({
