@@ -1,12 +1,15 @@
 import axios from 'axios';
 import { slugify } from '../util';
 
+const WHISKIES_URL = '/src/assets/data/whiskies.json';
+const TASTERS_URL = '/src/assets/data/tasters.json';
+
 function getRequest(url) {
   return axios.get(url);
 }
 
 function getWhiskies() {
-  return getRequest('./src/assets/data/whiskies.json');
+  return getRequest(WHISKIES_URL);
 }
 
 async function getWhiskyById(id, whiskies) {
@@ -15,7 +18,7 @@ async function getWhiskyById(id, whiskies) {
 }
 
 function getTasters() {
-  return getRequest('./src/assets/data/tasters.json');
+  return getRequest(TASTERS_URL);
 }
 
 async function getTasterById(id, tasters) {
@@ -28,6 +31,7 @@ async function getTasterWhiskiesById(id, whiskies) {
     const allTasterIds = whisky.ratings.map(rating => slugify(rating.name));
     return allTasterIds.includes(id);
   });
+
   return tastersWhiskies;
 }
 
