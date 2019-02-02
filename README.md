@@ -7,11 +7,14 @@
 - redux thunk middleware
 - containers
 - react-router
+- code splitting: React.lazy and Suspense
+- prop-types
+- use PureComponent and React.memo
+- Deep linking
 
 #### Incomplete
-- prop-types
 - testing
-- code splitting on module load
+- sass
+- custom fonts
 - image caching
 - service worker
-- deep links

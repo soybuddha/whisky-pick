@@ -11,7 +11,6 @@ import {
 import {
   fetchTasters,
   fetchTasterById,
-  fetchTasterWhiskiesById,
   fetchWhiskies,
 } from '../../store/actions';
 import TasterDetail from '../../components/taster/TasterDetail';
@@ -26,10 +25,8 @@ class TasterDetailContainer extends React.Component {
     const { allTasters, allWhiskies } = this.props;
 
     if (allTasters.length && allWhiskies.length) {
-      this.props.fetchTasterById(tasterId, allTasters).then(() => {
-        Promise.resolve(this.props.fetchTasterWhiskiesById(tasterId, allWhiskies)).then(() => {
-          this.setState({ isLoading: false });
-        });
+      this.props.fetchTasterById(tasterId, allTasters, allWhiskies).then(() => {
+        this.setState({ isLoading: false });
       }).catch(err => err);
     } else {
       Promise.all([
@@ -37,10 +34,8 @@ class TasterDetailContainer extends React.Component {
         this.props.fetchWhiskies(),
       ])
         .then((responses) => {
-          this.props.fetchTasterById(tasterId, responses[0].data).then(() => {
-            Promise.resolve(this.props.fetchTasterWhiskiesById(tasterId, responses[1].data)).then(() => {
-              this.setState({ isLoading: false });
-            });
+          this.props.fetchTasterById(tasterId, responses[0].data, responses[1].data).then(() => {
+            this.setState({ isLoading: false });
           });
         }).catch(err => err);
     }
@@ -74,7 +69,6 @@ TasterDetailContainer.propTypes = {
   selectedTaster: object.isRequired,
   fetchTasterById: func.isRequired,
   allWhiskies: array.isRequired,
-  fetchTasterWhiskiesById: func.isRequired,
   fetchTasters: func.isRequired,
   fetchWhiskies: func.isRequired,
 };
@@ -82,6 +76,5 @@ TasterDetailContainer.propTypes = {
 export default withRouter(connect(mapStateToProps, {
   fetchTasters,
   fetchTasterById,
-  fetchTasterWhiskiesById,
   fetchWhiskies,
 })(TasterDetailContainer));

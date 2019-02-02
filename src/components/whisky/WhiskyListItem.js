@@ -1,20 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
-  bool,
-  object,
   number,
   shape,
   string,
 } from 'prop-types';
-import Loading from '../common/Loading';
-import BackButton from '../common/BackButton';
+import { slugify } from '../../util';
 
-const WhiskyDetailItem = React.memo(({ whisky }) => {
+const WhiskyListItem = React.memo(({ whisky }) => {
   const imageSrc = require(`../../assets/images/whiskies/${whisky.id}.jpg`);
   // const imageSrc = `/dist/src/assets/images/whiskies/${whisky.id}.jpg`;
 
   return (
-    <>
+    <Link
+      to={`/whiskies/${slugify(whisky.brand)}/${slugify(whisky.name)}`}
+      className="whisky-list-item"
+    >
       <img
         src={imageSrc}
         alt={`${whisky.brand} - ${whisky.name}`}
@@ -25,14 +26,11 @@ const WhiskyDetailItem = React.memo(({ whisky }) => {
         {whisky.average_rating}
         <span>%</span>
       </h4>
-      <p>{whisky.description}</p>
-
-      <BackButton>X</BackButton>
-    </>
+    </Link>
   );
 });
 
-WhiskyDetailItem.propTypes = {
+WhiskyListItem.propTypes = {
   whisky: shape({
     average_rating: number,
     brand: string,
@@ -41,20 +39,4 @@ WhiskyDetailItem.propTypes = {
   }).isRequired,
 };
 
-const WhiskyDetail = ({ isLoading, whisky }) => {
-  return (
-    <div className="whisky-detail">
-      {(isLoading)
-        ? <Loading />
-        : <WhiskyDetailItem whisky={whisky} />
-      }
-    </div>
-  );
-};
-
-WhiskyDetail.propTypes = {
-  isLoading: bool.isRequired,
-  whisky: object.isRequired,
-};
-
-export default WhiskyDetail;
+export default WhiskyListItem;

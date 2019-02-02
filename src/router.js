@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Layout from './components/common/Layout';
 import Loading from './components/common/Loading';
 
-const Home = React.lazy(() => import('./components/common/Home'));
+const Home = React.lazy(() => import('./containers/home/HomeContainer'));
 const WhiskyList = React.lazy(() => import('./containers/whisky/WhiskyListContainer'));
 const WhiskyDetail = React.lazy(() => import('./containers/whisky/WhiskyDetailContainer'));
 const TasterList = React.lazy(() => import('./containers/taster/TasterListContainer'));

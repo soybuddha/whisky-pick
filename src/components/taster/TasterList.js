@@ -8,26 +8,23 @@ import {
 } from 'prop-types';
 import Loading from '../common/Loading';
 
-class TasterListItem extends React.PureComponent {
-  render() {
-    const { taster } = this.props;
-    const imageSrc = require(`../../assets/images/tasters/${taster.id}.jpg`);
-    // const imageSrc = `/dist/src/assets/images/tasters/${taster.id}.jpg`;
+const TasterListItem = React.memo(({ taster }) => {
+  const imageSrc = require(`../../assets/images/tasters/${taster.id}.jpg`);
+  // const imageSrc = `/dist/src/assets/images/tasters/${taster.id}.jpg`;
 
-    return (
-      <Link
-        to={`/tasters/${taster.id}`}
-        className="taster-list-item"
-      >
-        <img
-          src={imageSrc}
-          alt={`${taster.name}`}
-        />
-        <h2>{taster.name}</h2>
-      </Link>
-    );
-  }
-}
+  return (
+    <Link
+      to={`/tasters/${taster.id}`}
+      className="taster-list-item"
+    >
+      <img
+        src={imageSrc}
+        alt={`${taster.name}`}
+      />
+      <h2>{taster.name}</h2>
+    </Link>
+  );
+});
 
 TasterListItem.propTypes = {
   taster: shape({
