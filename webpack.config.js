@@ -16,6 +16,7 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
         use: [
           {
             loader: 'babel-loader',
@@ -24,14 +25,14 @@ module.exports = {
             },
           },
         ],
-        test: /\.js$/,
         exclude: /node_modules/,
       },
       {
-        use: ['style-loader', 'css-loader'],
-        test: /\.css$/,
+        test: /\.(s*)css$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
+        test: /\.(jpe?g|png|gif|svg|pdf|ico)$/,
         use: [
           {
             loader: 'file-loader',
@@ -40,7 +41,12 @@ module.exports = {
             },
           },
         ],
-        test: /\.(jpe?g|png|gif|svg|pdf|ico)$/,
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+          'file-loader',
+        ],
       },
     ],
   },

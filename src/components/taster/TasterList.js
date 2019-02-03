@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   array,
   bool,
+  number,
   shape,
   string,
 } from 'prop-types';
@@ -15,13 +16,18 @@ const TasterListItem = React.memo(({ taster }) => {
   return (
     <Link
       to={`/tasters/${taster.id}`}
-      className="taster-list-item"
+      className="taster-list-item container-list-item"
     >
       <img
         src={imageSrc}
         alt={`${taster.name}`}
+        className="container-image"
       />
-      <h2>{taster.name}</h2>
+
+      <div className="container-detail">
+        <h2>{taster.name}</h2>
+        <h3>Member since {taster.member_since}</h3>
+      </div>
     </Link>
   );
 });
@@ -30,12 +36,13 @@ TasterListItem.propTypes = {
   taster: shape({
     id: string,
     name: string,
+    member_since: number.isRequired,
   }).isRequired,
 };
 
 const TasterList = ({ isLoading, tasters }) => {
   return (
-    <div className="taster-list">
+    <div className="taster-list container-list">
       {(isLoading)
         ? <Loading />
         : tasters.map(taster => <TasterListItem taster={taster} key={taster.id} />)

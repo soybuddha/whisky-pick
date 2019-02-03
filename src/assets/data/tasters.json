@@ -1,110 +1,137 @@
 [
   {
     "name": "Alex Zelenak",
-    "id": "alex-zelenak"
+    "id": "alex-zelenak",
+    "member_since": 2017
   },
   {
     "name": "Bryan Peterson",
-    "id": "bryan-peterson"
+    "id": "bryan-peterson",
+    "member_since": 2013
   },
   {
     "name": "Isaac Oster",
-    "id": "isaac-oster"
+    "id": "isaac-oster",
+    "member_since": 2015
   },
   {
     "name": "Jason Smith",
-    "id": "jason-smith"
+    "id": "jason-smith",
+    "member_since": 2014
   },
   {
     "name": "Joe Boutros",
-    "id": "joe-boutros"
+    "id": "joe-boutros",
+    "member_since": 2014
   },
   {
     "name": "Liam Wiles",
-    "id": "liam-wiles"
+    "id": "liam-wiles",
+    "member_since": 2013
   },
   {
     "name": "Oscar Aparicio",
-    "id": "oscar-aparicio"
+    "id": "oscar-aparicio",
+    "member_since": 2017
   },
   {
     "name": "Renee Trepagnier",
-    "id": "renee-trepagnier"
+    "id": "renee-trepagnier",
+    "member_since": 2016
   },
   {
     "name": "Vivek Goel",
-    "id": "vivek-goel"
+    "id": "vivek-goel",
+    "member_since": 2018
   },
   {
     "name": "Kevin Nayar",
-    "id": "kevin-nayar"
+    "id": "kevin-nayar",
+    "member_since": 2013
   },
   {
     "name": "Will Semons",
-    "id": "will-semons"
+    "id": "will-semons",
+    "member_since": 2016
   },
   {
     "name": "Craig Palumbo",
-    "id": "craig-palumbo"
+    "id": "craig-palumbo",
+    "member_since": 2015
   },
   {
     "name": "John Underwood",
-    "id": "john-underwood"
+    "id": "john-underwood",
+    "member_since": 2013
   },
   {
     "name": "April Green",
-    "id": "april-green"
+    "id": "april-green",
+    "member_since": 2013
   },
   {
     "name": "Jeremiah Brown",
-    "id": "jeremiah-brown"
+    "id": "jeremiah-brown",
+    "member_since": 2013
   },
   {
     "name": "Carolyn O'Connor",
-    "id": "carolyn-oconnor"
+    "id": "carolyn-oconnor",
+    "member_since": 2017
   },
   {
     "name": "Josh Shepherd",
-    "id": "josh-shepherd"
+    "id": "josh-shepherd",
+    "member_since": 2014
   },
   {
     "name": "Sam Kinard",
-    "id": "sam-kinard"
+    "id": "sam-kinard",
+    "member_since": 2015
   },
   {
     "name": "Carrie Wiles",
-    "id": "carrie-wiles"
+    "id": "carrie-wiles",
+    "member_since": 2013
   },
   {
     "name": "Patrick Tully",
-    "id": "patrick-tully"
+    "id": "patrick-tully",
+    "member_since": 2013
   },
   {
     "name": "Sajan Alexander",
-    "id": "sajan-alexander"
+    "id": "sajan-alexander",
+    "member_since": 2015
   },
   {
     "name": "Jonathan Horak",
-    "id": "jonathan-horak"
+    "id": "jonathan-horak",
+    "member_since": 2013
   },
   {
     "name": "Mitch Heard",
-    "id": "mitch-heard"
+    "id": "mitch-heard",
+    "member_since": 2013
   },
   {
     "name": "Tim Elias",
-    "id": "tim-elias"
+    "id": "tim-elias",
+    "member_since": 2014
   },
   {
     "name": "Robert Moon",
-    "id": "robert-moon"
+    "id": "robert-moon",
+    "member_since": 2014
   },
   {
     "name": "Rick Ford",
-    "id": "rick-ford"
+    "id": "rick-ford",
+    "member_since": 2013
   },
   {
     "name": "John McNeal",
-    "id": "john-mcneal"
+    "id": "john-mcneal",
+    "member_since": 2013
   }
 ]

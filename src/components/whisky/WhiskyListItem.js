@@ -14,18 +14,21 @@ const WhiskyListItem = React.memo(({ whisky }) => {
   return (
     <Link
       to={`/whiskies/${slugify(whisky.brand)}/${slugify(whisky.name)}`}
-      className="whisky-list-item"
+      className="whisky-list-item container-list-item"
     >
       <img
         src={imageSrc}
         alt={`${whisky.brand} - ${whisky.name}`}
+        className="container-image"
       />
-      <h2>{whisky.brand}</h2>
-      <h3>{whisky.name}</h3>
-      <h4>
-        {whisky.average_rating}
-        <span>%</span>
-      </h4>
+      <div className="container-detail">
+        <h2>{whisky.brand}</h2>
+        <h3>{whisky.name}</h3>
+        <h4>
+          {whisky.average_rating}
+          <span>%</span>
+        </h4>
+      </div>
     </Link>
   );
 });

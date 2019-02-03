@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900|Roboto');
+
+$fontPrimary: 'Montserrat', Helvetica, Arial, sans-serif;
+$fontSecondary: 'Roboto', Helvetica, Arial, sans-serif;
+// $fontSizeXL: 3em;
+// $fontSizeL: 2.2em;
+// $fontSizeM: 1.8em;
+// $fontSizeS: 1.5em;
+// $fontSizeXS: 1.25em;
+
+$colorWhite: #FCFCFC;
+$colorGrayDark: #232323;
+$colorBlack: #121212;
+
+$colorYellow: #FFBE00;
+$colorPurple: #803AFA;
+$colorBlueMed: #3676E8;
+$colorBlueLight: #4EC7EA;
+
+$cubicBezier: cubic-bezier(0.4, 0.0, 0.2, 1);
+
+@keyframes spinLoader {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

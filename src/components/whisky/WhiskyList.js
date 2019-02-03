@@ -8,7 +8,7 @@ import WhiskyListItem from './WhiskyListItem';
 
 const WhiskyList = ({ isLoading, whiskies }) => {
   return (
-    <div className="whisky-list">
+    <div className="whisky-list container-list">
       {(isLoading)
         ? <Loading />
         : whiskies.map(whisky => <WhiskyListItem whisky={whisky} key={whisky.id} />)
