@@ -28,13 +28,14 @@ class WhiskyDetailContainer extends React.Component {
       this.props.fetchWhiskyById(id, allWhiskies).then(() => {
         this.setState({ isLoading: false });
       }).catch(err => err);
-    } else {
-      this.props.fetchWhiskies().then(response => {
-        Promise.resolve(this.props.fetchWhiskyById(id, response.data)).then(() => {
-          this.setState({ isLoading: false });
-        });
-      }).catch(err => err);
+      return;
     }
+
+    this.props.fetchWhiskies().then(response => {
+      Promise.resolve(this.props.fetchWhiskyById(id, response.data)).then(() => {
+        this.setState({ isLoading: false });
+      });
+    }).catch(err => err);
   }
 
   render() {

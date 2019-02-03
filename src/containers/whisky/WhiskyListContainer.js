@@ -15,11 +15,12 @@ class WhiskyListContainer extends React.Component {
 
     if (allWhiskies.length) {
       this.setState({ isLoading: false });
-    } else {
-      this.props.fetchWhiskies().then(() => {
-        this.setState({ isLoading: false });
-      }).catch(err => err);
+      return;
     }
+
+    this.props.fetchWhiskies().then(() => {
+      this.setState({ isLoading: false });
+    }).catch(err => err);
   }
 
   render() {
