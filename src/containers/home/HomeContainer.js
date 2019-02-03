@@ -13,9 +13,13 @@ class HomeContainer extends React.Component {
   componentDidMount() {
     const { favoriteWhiskies } = this.props;
 
-    this.props.fetchFavoriteWhiskies().then((result) => {
+    if (Object.keys(favoriteWhiskies).length !== 0) {
       this.setState({ isLoading: false });
-    }).catch(err => err);
+    } else {
+      this.props.fetchFavoriteWhiskies().then(() => {
+        this.setState({ isLoading: false });
+      }).catch(err => err);
+    }
   }
 
   render() {

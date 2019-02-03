@@ -5,7 +5,7 @@ import WhiskyListItem from '../whisky/WhiskyListItem';
 const Favorites = React.memo(({ favorites }) => {
   return (
     <div className="favorite-list container-list">
-      <h2>Our top-rated whiskeys</h2>
+      <h2>Our top-rated whiskys</h2>
 
       {Object.keys(favorites).map(key => (
         <div className="favorite-list-item" key={favorites[key].id}>
