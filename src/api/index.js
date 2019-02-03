@@ -21,7 +21,7 @@ async function getFavoriteWhiskies() {
   const response = await getWhiskies();
   const allWhiskies = response.data;
 
-  const favorites = {
+  const favorites = await {
     bourbon: allWhiskies
       .filter(w => w.type === 'Bourbon')
       .sort((a, b) => b.average_rating - a.average_rating)[0],
@@ -47,14 +47,21 @@ function getTasters() {
 }
 
 async function getTasterById(id, tasters, whiskies) {
-  const taster = await tasters.find(t => t.id === id);
+  const taster = tasters.find(t => t.id === id);
 
-  const tastersWhiskies = await whiskies.filter(whisky => {
+  const tastersWhiskies = whiskies.filter(whisky => {
     const allTasterIds = whisky.ratings.map(rating => slugify(rating.name));
     return allTasterIds.includes(id);
   });
 
-  taster.whiskies = tastersWhiskies;
+  tastersWhiskies.forEach(whisky => {
+    const tasterRating = whisky.ratings.find(rating => slugify(rating.name) === taster.id);
+    whisky.taster_rating = tasterRating.score;
+  });
+
+  tastersWhiskies.sort((a, b) => b.taster_rating - a.taster_rating);
+
+  taster.whiskies = await tastersWhiskies;
 
   return taster;
 }

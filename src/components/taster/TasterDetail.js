@@ -7,6 +7,7 @@ import {
 } from 'prop-types';
 import Loading from '../common/Loading';
 import BackButton from '../common/BackButton';
+import WhiskyList from '../whisky/WhiskyList';
 
 const TasterDetailItem = React.memo(({ taster }) => {
   const imageSrc = require(`../../assets/images/tasters/${taster.id}.jpg`);
@@ -19,6 +20,9 @@ const TasterDetailItem = React.memo(({ taster }) => {
         alt={`${taster.name}`}
       />
       <h2>{taster.name}</h2>
+
+      <h3>Favorites</h3>
+      <WhiskyList whiskies={taster.whiskies} isLoading={false} />
 
       <BackButton>X</BackButton>
     </>
