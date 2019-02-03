@@ -7,6 +7,7 @@ import {
   shape,
   string,
 } from 'prop-types';
+import ScrollToTop from '../common/ScrollToTop';
 import Loading from '../common/Loading';
 
 const TasterListItem = React.memo(({ taster }) => {
@@ -26,7 +27,10 @@ const TasterListItem = React.memo(({ taster }) => {
 
       <div className="container-detail">
         <h2>{taster.name}</h2>
-        <h3>Member since {taster.member_since}</h3>
+        <h3>
+          Member since &nbsp;
+          {taster.member_since}
+        </h3>
       </div>
     </Link>
   );
@@ -42,12 +46,14 @@ TasterListItem.propTypes = {
 
 const TasterList = ({ isLoading, tasters }) => {
   return (
-    <div className="taster-list container-list">
-      {(isLoading)
-        ? <Loading />
-        : tasters.map(taster => <TasterListItem taster={taster} key={taster.id} />)
-      }
-    </div>
+    <ScrollToTop>
+      <div className="taster-list container-list">
+        {(isLoading)
+          ? <Loading />
+          : tasters.map(taster => <TasterListItem taster={taster} key={taster.id} />)
+        }
+      </div>
+    </ScrollToTop>
   );
 };
 
