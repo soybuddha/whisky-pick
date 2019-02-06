@@ -15,7 +15,7 @@ export default (state = INITIAL_STATE, action) => {
     case FETCH_WHISKIES: {
       return {
         ...state,
-        all: [...action.payload.data],
+        all: [...action.payload],
       };
     }
 

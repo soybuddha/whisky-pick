@@ -35,10 +35,10 @@ const WhiskyListItem = React.memo(({ whisky }) => {
 
 WhiskyListItem.propTypes = {
   whisky: shape({
-    average_rating: number,
-    brand: string,
-    id: string,
-    name: string,
+    average_rating: number.isRequired,
+    brand: string.isRequired,
+    id: string.isRequired,
+    name: string.isRequired,
   }).isRequired,
 };
 

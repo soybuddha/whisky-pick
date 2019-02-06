@@ -18,6 +18,7 @@ const TasterDetailItem = React.memo(({ taster }) => {
       <img
         src={imageSrc}
         alt={`${taster.name}`}
+        className="taster-detail-image"
       />
       <h2>{taster.name}</h2>
 

@@ -20,9 +20,9 @@ class WhiskyDetailContainer extends React.Component {
   }
 
   componentDidMount() {
+    const { allWhiskies } = this.props;
     const { distilleryId, whiskyId } = this.props.match.params;
     const id = `${distilleryId}-${whiskyId}`;
-    const { allWhiskies } = this.props;
 
     if (allWhiskies.length) {
       this.props.fetchWhiskyById(id, allWhiskies).then(() => {
@@ -31,8 +31,8 @@ class WhiskyDetailContainer extends React.Component {
       return;
     }
 
-    this.props.fetchWhiskies().then(response => {
-      Promise.resolve(this.props.fetchWhiskyById(id, response.data)).then(() => {
+    this.props.fetchWhiskies().then(whiskies => {
+      this.props.fetchWhiskyById(id, whiskies).then(() => {
         this.setState({ isLoading: false });
       });
     }).catch(err => err);

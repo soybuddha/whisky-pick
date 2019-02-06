@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  array,
   bool,
   object,
   number,
@@ -15,29 +16,46 @@ const WhiskyDetailItem = React.memo(({ whisky }) => {
 
   return (
     <>
-      <img
-        src={imageSrc}
-        alt={`${whisky.brand} - ${whisky.name}`}
-      />
-      <h2>{whisky.brand}</h2>
-      <h3>{whisky.name}</h3>
+      <a
+        href={whisky.url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src={imageSrc}
+          alt={`${whisky.brand} - ${whisky.name}`}
+          className="whisky-detail-image"
+        />
+      </a>
+      <BackButton>X</BackButton>
+      <div className="whisky-detail-content">
+        <h2>{whisky.brand}</h2>
+        <h3>{whisky.name}</h3>
+        <p>{whisky.description}</p>
+      </div>
       <h4>
         {whisky.average_rating}
         <span>%</span>
       </h4>
-      <p>{whisky.description}</p>
-
-      <BackButton>X</BackButton>
     </>
   );
 });
 
 WhiskyDetailItem.propTypes = {
   whisky: shape({
-    average_rating: number,
-    brand: string,
-    id: string,
-    name: string,
+    age: number.isRequired,
+    average_rating: number.isRequired, //
+    brand: string.isRequired, //
+    description: string.isRequired, //
+    event_date: string.isRequired,
+    id: string.isRequired, //
+    name: string.isRequired, //
+    origin: string.isRequired,
+    price: number.isRequired,
+    profiles: array.isRequired,
+    ratings: array.isRequired,
+    type: string.isRequired,
+    url: string.isRequired, //
   }).isRequired,
 };
 

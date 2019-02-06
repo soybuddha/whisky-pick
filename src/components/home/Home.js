@@ -4,6 +4,8 @@ import ScrollToTop from '../common/ScrollToTop';
 import Loading from '../common/Loading';
 import Hero from './Hero';
 import Favorites from './Favorites';
+import RatingComparison from './RatingComparison';
+import AgePriceComparison from './AgePriceComparison';
 
 const Home = ({ isLoading, favorites }) => {
   return (
@@ -12,7 +14,13 @@ const Home = ({ isLoading, favorites }) => {
         <Hero />
         {(isLoading)
           ? <Loading />
-          : <Favorites favorites={favorites} />
+          : (
+            <>
+              <Favorites favorites={favorites} />
+              <RatingComparison favorites={favorites} />
+              <AgePriceComparison favorites={favorites} />
+            </>
+          )
         }
       </div>
     </ScrollToTop>

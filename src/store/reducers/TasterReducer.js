@@ -13,7 +13,7 @@ export default (state = INITIAL_STATE, action) => {
     case FETCH_TASTERS: {
       return {
         ...state,
-        all: [...action.payload.data],
+        all: [...action.payload],
       };
     }
 

@@ -36,7 +36,7 @@ class TasterDetailContainer extends React.Component {
       this.props.fetchWhiskies(),
     ])
       .then((responses) => {
-        this.props.fetchTasterById(tasterId, responses[0].data, responses[1].data).then(() => {
+        this.props.fetchTasterById(tasterId, responses[0], responses[1]).then(() => {
           this.setState({ isLoading: false });
         });
       }).catch(err => err);
