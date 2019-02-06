@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { node, object } from 'prop-types';
 
-class BackButton extends React.Component {
+class BackButton extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleKeyPress = this.handleKeyPress.bind(this);
