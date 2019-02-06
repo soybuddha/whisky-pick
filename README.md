@@ -15,6 +15,7 @@ ReduxThunk.withExtraArgument(api)
 
 
 <br>
+
 **Fetches are made via the container/component pattern in the following order.**
 
 The `route` loads a parent component which is a `container`. The `container` checks if the needed data already exists in `store`. If not, an `action` is called.
