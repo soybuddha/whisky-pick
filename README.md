@@ -25,16 +25,19 @@ The `action` calls a corresponding custom API method which contains all the logi
 The returned data from the `action` is passed to the `reducer` and it updates the `store`. Finally, the `container` receives the data and sends it to the child component(s).
 
 <br>
+
 ### Support deeplinking
 On each route, the `containers` check for any prerequisites in state. If the needed data is not present, the `container` fires the initial `action` to fetch it first, essentially this part under **State Management**:
 > The `container` checks if the needed data already exists in `store`. If not, an `action` is called.
 
 <br>
+
 ### Code splitting
 Lazy load components using using `React.lazy`.
 ```
 const Home = React.lazy(() => import('./containers/home/HomeContainer'));
 ```
+
 <br>
 
 Wrap routes from `react-router` in a `React.Suspense` component to enable code splitting. This splits `bundle.js` into route-based chunks and only loads the appropriate JS file(s) when the corresponding component(s) are loaded via routing.
@@ -48,9 +51,11 @@ Wrap routes from `react-router` in a `React.Suspense` component to enable code s
 ```
 
 <br>
+
 ### Optimize rendering
 For stateless or pure components, avoid re-rendering on parent component render by leveraging `React.PureComponent` (for class-based components) or `React.memo` (for function components). Use function components whenever possible.
 
 <br>
+
 ### Type statically where possible
 Enforce loose static typing by using `PropTypes` in every component. Generally, it is okay with pass generic `array` or `object` types, but validate the `shape` on the rendering component level.
