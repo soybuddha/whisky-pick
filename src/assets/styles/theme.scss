@@ -5,13 +5,17 @@ $fontSecondary: 'Roboto', Helvetica, Arial, sans-serif;
 
 $colorWhite: #FCFCFC;
 $colorGrayLight: #EDEDED;
-$colorGrayDark: #232323;
+$colorGray: #888888;
+$colorGrayDark: #454545;
 $colorBlack: #121212;
 
 $colorYellow: #FFBE00;
-$colorPurple: #803AFA;
-$colorBlueMed: #3676E8;
-$colorBlueLight: #4EC7EA;
+$colorYellowLight: #FCD263;
+$colorYellowDark: #EDAE00;
+
+$colorGradientYellow: linear-gradient(30deg, $colorYellowLight 0, $colorYellow 35%, $colorYellowDark 95%);
+$colorGradientBlack: linear-gradient(30deg, $colorGrayDark 0, $colorBlack 95%);
+$colorGradientGray: linear-gradient(30deg, $colorGrayLight 0, $colorGray 95%);
 
 $cubicBezier: cubic-bezier(0.4, 0.0, 0.2, 1);
 

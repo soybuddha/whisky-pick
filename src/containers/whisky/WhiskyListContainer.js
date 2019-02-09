@@ -11,9 +11,9 @@ class WhiskyListContainer extends React.Component {
   }
 
   componentDidMount() {
-    const { allWhiskies } = this.props;
+    const { transducedWhiskies } = this.props;
 
-    if (allWhiskies.length) {
+    if (transducedWhiskies.length) {
       this.setState({ isLoading: false });
       return;
     }
@@ -26,7 +26,7 @@ class WhiskyListContainer extends React.Component {
   render() {
     return (
       <WhiskyList
-        whiskies={this.props.allWhiskies}
+        whiskies={this.props.transducedWhiskies}
         isLoading={this.state.isLoading}
       />
     );
@@ -36,11 +36,12 @@ class WhiskyListContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     allWhiskies: state.whiskies.all,
+    transducedWhiskies: state.whiskies.transduced,
   };
 };
 
 WhiskyListContainer.propTypes = {
-  allWhiskies: array.isRequired,
+  transducedWhiskies: array.isRequired,
   fetchWhiskies: func.isRequired,
 };
 

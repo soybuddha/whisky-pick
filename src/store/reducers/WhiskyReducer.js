@@ -1,13 +1,16 @@
 import {
   FETCH_WHISKIES,
-  FETCH_WHISKY_BY_ID,
   FETCH_FAVORITE_WHISKIES,
+  FETCH_WHISKY_BY_ID,
+  FILTER_WHISKIES_BY_TYPE,
+  FILTER_WHISKIES_BY_PROFILE,
 } from '../actions';
 
 const INITIAL_STATE = {
   all: [],
-  selected: {},
   favorites: {},
+  transduced: [],
+  selected: {},
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -16,6 +19,14 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         all: [...action.payload],
+        transduced: [...action.payload],
+      };
+    }
+
+    case FETCH_FAVORITE_WHISKIES: {
+      return {
+        ...state,
+        favorites: action.payload,
       };
     }
 
@@ -26,10 +37,17 @@ export default (state = INITIAL_STATE, action) => {
       };
     }
 
-    case FETCH_FAVORITE_WHISKIES: {
+    case FILTER_WHISKIES_BY_TYPE: {
       return {
         ...state,
-        favorites: action.payload,
+        transduced: [...action.payload],
+      };
+    }
+
+    case FILTER_WHISKIES_BY_PROFILE: {
+      return {
+        ...state,
+        transduced: [...action.payload],
       };
     }
 

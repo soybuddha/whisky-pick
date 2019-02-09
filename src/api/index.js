@@ -3,7 +3,7 @@ import { slugify } from '../util';
 
 const WHISKIES_URL = '/src/assets/data/whiskies.json';
 const TASTERS_URL = '/src/assets/data/tasters.json';
-const FILTERS_URL = '/src/assets/data/filters.json';
+const TYPES_URL = '/src/assets/data/types.json';
 
 function getRequest(url) {
   return axios.get(url);
@@ -29,35 +29,31 @@ async function getTasters() {
   }
 }
 
-async function getFilters() {
+async function getTypes() {
   try {
-    const filters = await getRequest(FILTERS_URL);
-    return filters.data;
+    const types = await getRequest(TYPES_URL);
+    return types.data;
   } catch (err) {
     console.log(err);
     return err;
   }
 }
 
-async function getFavoriteWhiskies() {
+async function getFavoriteWhiskies(whiskies) {
   try {
-    const [whiskyTypes, allWhiskies] = await Promise.all([
-      getFilters(),
-      getWhiskies(),
-    ]);
-
+    const whiskyTypes = await getTypes();
     const favorites = {};
 
     whiskyTypes.forEach(whiskyType => {
-      const whiskies = allWhiskies.filter(w => w.type === whiskyType);
+      const selectedWhiskies = whiskies.filter(w => w.type === whiskyType);
 
       favorites[whiskyType] = {
         id: slugify(whiskyType),
         name: whiskyType,
-        whiskies: whiskies.sort((a, b) => b.average_rating - a.average_rating),
-        average_age: Math.round(whiskies.reduce((all, cur) => all + cur.age, 0) / whiskies.length),
-        average_price: Math.round(whiskies.reduce((all, cur) => all + cur.price, 0) / whiskies.length),
-        average_rating: Math.round(whiskies.reduce((all, cur) => all + cur.average_rating, 0) / whiskies.length),
+        whiskies: selectedWhiskies.sort((a, b) => b.average_rating - a.average_rating),
+        average_age: Math.round(selectedWhiskies.reduce((all, cur) => all + cur.age, 0) / selectedWhiskies.length),
+        average_price: Math.round(selectedWhiskies.reduce((all, cur) => all + cur.price, 0) / selectedWhiskies.length),
+        average_rating: Math.round(selectedWhiskies.reduce((all, cur) => all + cur.average_rating, 0) / selectedWhiskies.length),
       };
     });
 
@@ -66,6 +62,19 @@ async function getFavoriteWhiskies() {
     console.log(err);
     return err;
   }
+}
+
+async function filterWhiskiesByType(filters, whiskies) {
+  const filteredWhiskies = await whiskies.filter(whisky => filters.includes(whisky.type));
+  return filteredWhiskies;
+}
+
+async function filterWhiskiesByProfile(filters, whiskies) {
+  const filteredWhiskies = await whiskies.filter(whisky => {
+    const allProfiles = whisky.profiles.map(p => p);
+    return allProfiles.some(profile => filters.includes(profile));
+  });
+  return filteredWhiskies;
 }
 
 async function getWhiskyById(id, whiskies) {
@@ -107,6 +116,8 @@ export default {
   getWhiskies,
   getTasters,
   getFavoriteWhiskies,
+  filterWhiskiesByType,
+  filterWhiskiesByProfile,
   getWhiskyById,
   getTasterById,
 };

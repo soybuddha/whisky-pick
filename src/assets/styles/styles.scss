@@ -25,7 +25,7 @@ body {
   left: 0;
   height: 100px;
   width: 100%;
-  background: linear-gradient(30deg, $colorPurple 0, $colorBlueMed 35%, $colorBlueLight 95%);
+  background: $colorGradientBlack;
   z-index: 1;
 
   h1 {
@@ -62,7 +62,7 @@ body {
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  border: 6px solid $colorBlueMed;
+  border: 6px solid $colorYellow;
   border-top-color: transparent;
   text-indent: -999em;
   position: absolute;
@@ -217,7 +217,7 @@ body {
 
       .comparison-inner {
         width: 50%;
-        background: linear-gradient(30deg, $colorPurple 0, $colorBlueMed 35%, $colorBlueLight 95%);
+        background: $colorGradientYellow;
       }
 
       p {
@@ -255,7 +255,7 @@ body {
       }
 
       .age-price-comparison-detail {
-        background: linear-gradient(30deg, $colorPurple 0, $colorBlueMed 35%, $colorBlueLight 95%);
+        background: $colorGradientYellow;
         padding: 20px;
         text-align: center;
         color: $colorWhite;
@@ -296,7 +296,7 @@ body {
     margin: 1.5%;
     float: left;
     overflow: hidden;
-    color: $colorWhite;
+    color: $colorBlack;
     transition: all 250ms $cubicBezier;
 
     &:hover {
@@ -313,7 +313,7 @@ body {
       $containerDetailRatingWidth: 75px;
       height: $containerDetailHeight;
       font-family: $fontPrimary;
-      background: linear-gradient(30deg, $colorPurple 0, $colorBlueMed 35%, $colorBlueLight 95%);
+      background: $colorGradientYellow;
       position: relative;
 
       h2 {
@@ -426,7 +426,7 @@ body {
     height: 120px;
     line-height: 120px;
     color: $colorWhite;
-    background: linear-gradient(30deg, $colorPurple 0, $colorBlueMed 35%, $colorBlueLight 95%);
+    background: $colorGradientYellow;
     text-align: center;
     font-family: $fontPrimary;
     font-weight: 900;
@@ -448,8 +448,8 @@ body {
 }
 
 .footer {
-  background: linear-gradient(30deg, $colorPurple 0, $colorBlueMed 35%, $colorBlueLight 95%);
-  color: $colorBlueLight;
+  background: $colorGradientBlack;
+  color: $colorGrayLight;
   padding: 20px 0;
   width: 100%;
   text-align: center;
@@ -457,10 +457,11 @@ body {
   bottom: 0;
 
   p {
-    font-size: 1.4em;
+    font-size: 1.2em;
 
     a {
       color: $colorWhite;
+      font-weight: bold;
     }
   }
 }
