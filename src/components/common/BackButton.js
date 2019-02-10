@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import { node, object } from 'prop-types';
+import { object } from 'prop-types';
 
 class BackButton extends React.PureComponent {
   constructor(props) {
@@ -36,14 +36,13 @@ class BackButton extends React.PureComponent {
         role="button"
         tabIndex="0"
       >
-        {this.props.children}
+        <i className="material-icons">close</i>
       </div>
     );
   }
 }
 
 BackButton.propTypes = {
-  children: node.isRequired,
   history: object.isRequired,
 };
 

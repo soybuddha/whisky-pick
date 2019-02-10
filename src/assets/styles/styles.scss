@@ -5,11 +5,6 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 body {
   font-size: 62.5%;
   position: relative;
@@ -25,19 +20,28 @@ body {
   left: 0;
   height: 100px;
   width: 100%;
-  background: $colorGradientBlack;
+  background: $colorGradientGray;
   z-index: 1;
+
+  a {
+    color: $colorGrayDark;
+    transition: all .25s $cubicBezier;
+
+    &:hover {
+      color: $colorGray;
+    }
+  }
 
   h1 {
     font-size: 2em;
     font-family: $fontPrimary;
-    font-weight: 900;
-    height: 100px;
-    line-height: 100px;
     margin-left: 3%;
 
     a {
-      color: $colorWhite;
+      display: block;
+      width: 140px;
+      height: 100px;
+      line-height: 100px;
     }
   }
 
@@ -51,7 +55,6 @@ body {
     a {
       display: block;
       float: left;
-      color: $colorWhite;
       line-height: 100px;
       padding: 0 26px;
     }
@@ -77,7 +80,6 @@ body {
 
 .container {
   margin: 100px auto;
-  min-height: 640px;
   overflow: hidden;
 }
 
@@ -242,8 +244,8 @@ body {
       margin: 1.5%;
       float: left;
       opacity: 0;
-      animation: animateList 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0.35s forwards;
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: animateList 0.35s $cubicBezier 0.35s forwards;
+      transition: all 0.35s $cubicBezier;
 
       >h3 {
         font-family: $fontPrimary;
@@ -371,9 +373,36 @@ body {
   }
 }
 
+.detail {
+  .back-btn {
+    position: absolute;
+    right: 1.5%;
+    color: $colorWhite;
+    font-size: 3.6em;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    background: $colorGrayDark;
+    text-align: center;
+    cursor: pointer;
+    transition: all .25s $cubicBezier;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
 .whisky-detail {
-  padding: 1.5% 3%;
-  position: relative;
+  position: absolute;
+  top: calc(50% + 90px);
+  margin: 0 3%;
+  width: 94%;
+  opacity: 0;
+  animation: slideRight .35s $cubicBezier .25s forwards;
+  background: $colorGradientBlack;
+  overflow: hidden;
   $whiskyDetailProportion: 460px;
 
   .whisky-detail-image {
@@ -386,37 +415,46 @@ body {
     width: calc(100% - 460px);
     height: $whiskyDetailProportion;
     float: right;
-    border-top: 1px solid $colorGrayLight;
-    border-right: 1px solid $colorGrayLight;
-    border-bottom: 1px solid $colorGrayLight;
-    color: $colorBlack;
+    color: $colorWhite;
+
+    h2,
+    h3,
+    p {
+      padding-left: 40px;
+    }
 
     h2 {
-      font-size: 4.8em;
+      font-size: 4.2em;
       font-family: $fontPrimary;
-      margin: 20px 20px 5px;
+      padding-top: 40px;
+      padding-bottom: 15px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      height: 50px;
+      height: 105px;
     }
 
     h3 {
-      font-size: 3em;
-      margin: 0 20px 5px;
+      font-size: 2.4em;
+      padding-bottom: 15px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      height: 32px;
+      height: 47px;
     }
 
     p {
       font-size: 1.4em;
-      margin: 0 20px 20px;
+      padding-bottom: 15px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      height: 16px;
+      height: 31px;
+      border-bottom: 1px solid $colorGrayDark;
+    }
+
+    .back-btn {
+      top: 67px;
     }
   }
 
@@ -433,23 +471,105 @@ body {
     font-size: 3.6em;
   }
 
-  .back-btn {
-    position: absolute;
-    right: 3%;
-    top: 3%;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    cursor: pointer;
+  .attributes {
+    height: 120px;
+    width: calc(100% - 460px);
+    line-height: 120px;
     background: $colorBlack;
+    color: $colorGray;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    .attribute {
+      padding: 0 2.5%;
+      float: left;
+      width: 25%;
+
+      .attribute-key {
+        line-height: 120px;
+        font-size: 2.2em;
+        margin: 0 .3em;
+        float: left;
+      }
+
+      .attribute-value {
+        line-height: 120px;
+        font-size: 1.4em;
+        float: left;
+      }
+
+    }
+  }
+}
+
+.taster-detail {
+  opacity: 0;
+  animation: slideRight .35s $cubicBezier .25s forwards;
+
+  .taster-detail-content {
+    background: $colorGradientBlack;
     color: $colorWhite;
+    overflow: hidden;
+    position: relative;
+
+    .taster-detail-image {
+      width: 140px;
+      height: 140px;
+      float: left;
+    }
+
+    .name,
+    p {
+      margin-left: calc(140px + 1.5%);
+    }
+
+    .name {
+      margin-top: 35px;
+      margin-bottom: 10px;
+      height: 30px;
+
+      h2 {
+        font-family: $fontPrimary;
+        font-size: 2.8em;
+        float: left;
+        margin-right: 20px;
+      }
+
+      .material-icons,
+      .pro {
+        font-size: 1.4em;
+        line-height: 30px;
+        margin-right: 6px;
+        vertical-align: bottom;
+      }
+
+      .pro {
+        text-transform: uppercase;
+      }
+    }
+
+    p {
+      font-size: 1.4em;
+    }
+
+    .back-btn {
+      top: 50%;
+      margin-top: -25px;
+    }
+  }
+
+  >h3 {
+    text-align: center;
+    font-family: $fontPrimary;
+    font-size: 3.6em;
+    margin: 40px auto 0;
   }
 }
 
 .footer {
-  background: $colorGradientBlack;
-  color: $colorGrayLight;
+  background: $colorGradientGray;
+  color: $colorGray;
   padding: 20px 0;
   width: 100%;
   text-align: center;
@@ -460,8 +580,12 @@ body {
     font-size: 1.2em;
 
     a {
-      color: $colorWhite;
-      font-weight: bold;
+      color: $colorGrayDark;
+      transition: all .25s $cubicBezier;
+
+      &:hover {
+        color: $colorBlack;
+      }
     }
   }
 }

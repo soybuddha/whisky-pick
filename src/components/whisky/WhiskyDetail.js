@@ -27,16 +27,43 @@ const WhiskyDetailItem = React.memo(({ whisky }) => {
           className="whisky-detail-image"
         />
       </a>
-      <BackButton>X</BackButton>
+
       <div className="whisky-detail-content">
         <h2>{whisky.brand}</h2>
         <h3>{whisky.name}</h3>
         <p>{whisky.description}</p>
+        <BackButton />
       </div>
+
       <h4>
         {whisky.average_rating}
         <span>%</span>
       </h4>
+
+      <div className="attributes">
+        <div className="attribute">
+          <i className="attribute-key material-icons">local_bar</i>
+          <p className="attribute-value">{whisky.type}</p>
+        </div>
+        <div className="attribute">
+          <i className="attribute-key material-icons">place</i>
+          <p className="attribute-value">{whisky.origin}</p>
+        </div>
+        <div className="attribute">
+          <i className="attribute-key material-icons">watch_later</i>
+          <p className="attribute-value">
+            {whisky.age}
+            &nbsp;years
+          </p>
+        </div>
+        <div className="attribute">
+          <i className="attribute-key material-icons">monetization_on</i>
+          <p className="attribute-value">
+            $&nbsp;
+            {whisky.price}
+          </p>
+        </div>
+      </div>
     </>
   );
 });
@@ -61,7 +88,7 @@ WhiskyDetailItem.propTypes = {
 
 const WhiskyDetail = ({ isLoading, whisky }) => {
   return (
-    <div className="whisky-detail">
+    <div className="whisky-detail detail">
       {(isLoading)
         ? <Loading />
         : <WhiskyDetailItem whisky={whisky} />

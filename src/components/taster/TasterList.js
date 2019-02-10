@@ -28,7 +28,7 @@ const TasterListItem = React.memo(({ taster }) => {
       <div className="container-detail">
         <h2>{taster.name}</h2>
         <h3>
-          Member since &nbsp;
+          Member since&nbsp;
           {taster.member_since}
         </h3>
       </div>

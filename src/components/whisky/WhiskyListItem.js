@@ -7,7 +7,7 @@ import {
 } from 'prop-types';
 import { slugify } from '../../util';
 
-const WhiskyListItem = React.memo(({ whisky }) => {
+const WhiskyListItem = React.memo(({ whisky, parentView }) => {
   const imageSrc = require(`../../assets/images/whiskies/${whisky.id}.jpg`);
   // const imageSrc = `/dist/src/assets/images/whiskies/${whisky.id}.jpg`;
 
@@ -24,10 +24,20 @@ const WhiskyListItem = React.memo(({ whisky }) => {
       <div className="container-detail">
         <h2>{whisky.brand}</h2>
         <h3>{whisky.name}</h3>
-        <h4>
-          {whisky.average_rating}
-          <span>%</span>
-        </h4>
+        {(parentView === 'taster')
+          ? (
+            <h4>
+              {whisky.taster_rating}
+              <span>%</span>
+            </h4>
+          )
+          : (
+            <h4>
+              {whisky.average_rating}
+              <span>%</span>
+            </h4>
+          )
+        }
       </div>
     </Link>
   );
@@ -40,6 +50,7 @@ WhiskyListItem.propTypes = {
     id: string.isRequired,
     name: string.isRequired,
   }).isRequired,
+  parentView: string.isRequired,
 };
 
 export default WhiskyListItem;

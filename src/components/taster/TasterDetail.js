@@ -15,17 +15,40 @@ const TasterDetailItem = React.memo(({ taster }) => {
 
   return (
     <>
-      <img
-        src={imageSrc}
-        alt={`${taster.name}`}
-        className="taster-detail-image"
+      <div className="taster-detail-content">
+        <img
+          src={imageSrc}
+          alt={`${taster.name}`}
+          className="taster-detail-image"
+        />
+        <div className="name">
+          <h2>{taster.name}</h2>
+          {(taster.whiskies.length >= 20)
+            && (
+              <div className="pro">
+                <i className="material-icons">star</i>
+                Pro
+              </div>
+            )
+          }
+        </div>
+        <p>
+          has rated&nbsp;
+          {taster.whiskies.length}
+          &nbsp;whiskies &nbsp;&nbsp;|&nbsp;&nbsp; member since&nbsp;
+          {taster.member_since}
+        </p>
+        <BackButton />
+      </div>
+
+      <h3>Favorite whiskies</h3>
+      <WhiskyList
+        whiskies={taster.whiskies}
+        parentView="taster"
+        isLoading={false}
       />
-      <h2>{taster.name}</h2>
 
-      <h3>Favorites</h3>
-      <WhiskyList whiskies={taster.whiskies} isLoading={false} />
 
-      <BackButton>X</BackButton>
     </>
   );
 });
@@ -39,7 +62,7 @@ TasterDetailItem.propTypes = {
 
 const TasterDetail = ({ isLoading, taster }) => {
   return (
-    <div className="taster-detail">
+    <div className="taster-detail detail">
       {(isLoading)
         ? <Loading />
         : <TasterDetailItem taster={taster} />

@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900|Roboto|Material+Icons');
 
 $fontPrimary: 'Montserrat', Helvetica, Arial, sans-serif;
 $fontSecondary: 'Roboto', Helvetica, Arial, sans-serif;
 
 $colorWhite: #FCFCFC;
-$colorGrayLight: #EDEDED;
-$colorGray: #888888;
-$colorGrayDark: #454545;
 $colorBlack: #121212;
+
+$colorGray: #888888;
+$colorGrayLight: #EDEDED;
+$colorGrayDark: #454545;
 
 $colorYellow: #FFBE00;
 $colorYellowLight: #FCD263;
@@ -15,7 +16,7 @@ $colorYellowDark: #EDAE00;
 
 $colorGradientYellow: linear-gradient(30deg, $colorYellowLight 0, $colorYellow 35%, $colorYellowDark 95%);
 $colorGradientBlack: linear-gradient(30deg, $colorGrayDark 0, $colorBlack 95%);
-$colorGradientGray: linear-gradient(30deg, $colorGrayLight 0, $colorGray 95%);
+$colorGradientGray: linear-gradient(30deg, $colorWhite 0, $colorGrayLight 35%);
 
 $cubicBezier: cubic-bezier(0.4, 0.0, 0.2, 1);
 
@@ -30,6 +31,10 @@ $cubicBezier: cubic-bezier(0.4, 0.0, 0.2, 1);
 @keyframes fadeUp {
   0% { transform: translateY(100%); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes slideRight {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
 }
 @keyframes growRight {
   0% { width: 0; opacity: 0; }

@@ -10,7 +10,10 @@ const Favorites = React.memo(({ favorites }) => {
       {Object.keys(favorites).map(key => (
         <div className="favorite-list-item" key={favorites[key].id}>
           <h3>{favorites[key].name}</h3>
-          <WhiskyListItem whisky={favorites[key].whiskies[0]} />
+          <WhiskyListItem
+            whisky={favorites[key].whiskies[0]}
+            parentView="favorites"
+          />
         </div>
       ))}
     </div>
