@@ -27,6 +27,12 @@ body {
     color: $colorGrayDark;
     transition: all .25s $cubicBezier;
 
+    .material-icons {
+      font-size: 1em;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
     &:hover {
       color: $colorGray;
     }
@@ -421,6 +427,7 @@ body {
     h3,
     p {
       padding-left: 40px;
+      padding-right: 40px;
     }
 
     h2 {
@@ -586,6 +593,187 @@ body {
       &:hover {
         color: $colorBlack;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .hero {
+    h2,
+    p {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+
+    h2 {
+      font-size: 2em;
+      padding-top: 18%;
+    }
+
+    p {
+      font-size: 1.6em;
+    }
+
+    .attr {
+      right: 0;
+      width: 100%;
+    }
+  }
+
+  .featured {
+    > h2 {
+      font-size: 1.8em;
+    }
+
+    .rating-comparison-item {
+      h3 {
+        width: 80px;
+        font-size: 1.2em;
+      }
+
+      .comparison-bar {
+        width: calc(100% - 90px);
+      }
+    }
+
+    .favorite-list-item {
+      width: 97%;
+
+      > h3 {
+        font-size: 1.2em;
+      }
+    }
+  }
+
+  &.featured.age-price-comparison {
+    .age-price-comparison-item {
+      width: 97%;
+
+      > h3 {
+        font-size: 1.2em;
+      }
+
+      .age-price-comparison-detail {
+        padding: 20px 10px;
+        float: left;
+        width: 100%;
+
+        .price-comparison-detail-card {
+          border-bottom-color: transparent;
+          border-right: 1px solid $colorWhite;
+        }
+
+        .price-comparison-detail-card,
+        .age-comparison-detail-card {
+          width: 50%;
+          float: left;
+        }
+
+        h4 {
+          font-size: 2.6em;
+          margin: 0 auto 10px;
+        }
+
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .container {
+    margin: 100px auto 52px;
+  }
+
+  .container-list {
+    .container-list-item {
+      margin: 0 auto 1.5%;
+      width: 100%;
+
+      .container-image {
+        width: 100px;
+      }
+
+      .container-detail {
+        height: 100px;
+        width: calc(100% - 100px);
+        float: right;
+
+        h2,
+        h3 {
+          margin-left: 0;
+        }
+
+        h2 {
+          padding: 25px 0 0 15px;
+          height: 50px;
+        }
+
+        h4 {
+          left: auto;
+          right: 0;
+          height: 100px;
+          line-height: 100px;
+        }
+      }
+    }
+  }
+
+  .taster-list {
+    .taster-list-item {
+      .container-detail {
+        h2,
+        h3 {
+          text-align: left;
+          margin-left: 15px;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  .taster-detail {
+    .taster-detail-content {
+      .taster-detail-image {
+        width: 100px;
+        height: 100px;
+      }
+
+      .name {
+        margin-left: 115px;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        height: 30px;
+
+        h2 {
+          font-size: 1.8em;
+          margin-right: 10px;
+        }
+
+        .pro,
+        .material-icons {
+          font-size: 1.2em;
+          line-height: 20px;
+        }
+      }
+
+      p {
+        margin-left: 115px;
+        font-size: 1.2em;
+      }
+    }
+
+    .back-btn {
+      top: 50%;
+      margin-top: -18px;
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+    }
+
+    h3 {
+      font-size: 1.8em;
+      margin: 30px auto 10px;
     }
   }
 }
