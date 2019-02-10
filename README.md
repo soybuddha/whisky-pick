@@ -69,9 +69,10 @@ For stateless or pure components, avoid re-rendering on parent component render 
 
 <br>
 
-### Type statically where possible
+### Static typing
 Enforce loose static typing by using `PropTypes` in every component. Generally, it's okay with pass generic `array` or `object` types, but validate the `shape` on the rendering component level.
 
+<br>
 
 #### [TODO]
 - testing
