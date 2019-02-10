@@ -14,9 +14,12 @@ $colorYellow: #FFBE00;
 $colorYellowLight: #FCD263;
 $colorYellowDark: #EDAE00;
 
+$colorRed: #FF0000;
+
 $colorGradientYellow: linear-gradient(30deg, $colorYellowLight 0, $colorYellow 35%, $colorYellowDark 95%);
 $colorGradientBlack: linear-gradient(30deg, $colorGrayDark 0, $colorBlack 95%);
 $colorGradientGray: linear-gradient(30deg, $colorWhite 0, $colorGrayLight 35%);
+$colorGradientDarkAlpha: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
 
 $cubicBezier: cubic-bezier(0.4, 0.0, 0.2, 1);
 

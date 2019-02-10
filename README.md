@@ -2,7 +2,7 @@
 
 We're a local whisky collective based out of Austin, Texas. As self-proclaimed whisky connoisseurs, each month, we sample and rate two bottles of whisky from the world over. This site is a collection of our ratings of Bourbons, Irish, Rye, Scotch, Japanese, and other whiskies.
 
-Check it out at [**whiskypick.com**](http://whiskypick.com). You can filter whiskies by...
+You can filter whiskies by...
 
 **Whiskey Types**
 * Bourbon
@@ -41,7 +41,7 @@ The returned data is passed to the `reducer` and the `store` is updated. Finally
 <br>
 
 ### Support deeplinking
-On each route, the main `container` checks for any prerequisite data in state tree. If the data is not present, the `container` fires the initial `action` to fetch it first, essentially the paragraph listed under **State Management**.
+On each route, the main `container` checks for any prerequisite data in the state tree. If the data is not present, the `container` fires the initial `action` to fetch it first, essentially the paragraph listed under **State Management**.
 
 <br>
 
@@ -74,8 +74,8 @@ Enforce loose static typing by using `PropTypes` in every component. Generally, 
 
 <br>
 
-#### [TODO]
-- testing
-- sass - chunks and custom fonts
-- image caching/optimization
-- service workers
+### Remaining tasks
+- Add tests using [Jest](https://jestjs.io/)
+- Chunk and serve compiled Sass as a minified CSS file
+- Optimize/cache images - perhaps use [Cloudinary](https://cloudinary.com/)
+- Integrate service worker

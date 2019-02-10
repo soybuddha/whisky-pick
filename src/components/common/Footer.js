@@ -5,7 +5,7 @@ const Footer = React.memo(() => {
     <footer className="footer">
       <p>
         Made with&nbsp;
-        <span role="img" aria-label="love">❤️</span>
+        <i className="material-icons">favorite</i>
         &nbsp;by&nbsp;
         <a
           href="https://kevinnayar.github.io/"
