@@ -7,12 +7,14 @@ import {
   shape,
   string,
 } from 'prop-types';
+import { CLOUDINARY_TASTERS_BASE_URL } from '../../util';
 import ScrollToTop from '../common/ScrollToTop';
 import Loading from '../common/Loading';
 
 const TasterListItem = React.memo(({ taster }) => {
-  const imageSrc = require(`../../assets/images/tasters/${taster.id}.jpg`);
+  // const imageSrc = require(`../../assets/images/tasters/${taster.id}.jpg`);
   // const imageSrc = `/dist/src/assets/images/tasters/${taster.id}.jpg`;
+  const imageSrc = `${CLOUDINARY_TASTERS_BASE_URL}${taster.id}.jpg`;
 
   return (
     <Link

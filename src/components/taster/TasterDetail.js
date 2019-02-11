@@ -5,13 +5,15 @@ import {
   shape,
   string,
 } from 'prop-types';
+import { CLOUDINARY_TASTERS_BASE_URL } from '../../util';
 import Loading from '../common/Loading';
 import BackButton from '../common/BackButton';
 import WhiskyList from '../whisky/WhiskyList';
 
 const TasterDetailItem = React.memo(({ taster }) => {
-  const imageSrc = require(`../../assets/images/tasters/${taster.id}.jpg`);
+  // const imageSrc = require(`../../assets/images/tasters/${taster.id}.jpg`);
   // const imageSrc = `/dist/src/assets/images/tasters/${taster.id}.jpg`;
+  const imageSrc = `${CLOUDINARY_TASTERS_BASE_URL}${taster.id}.jpg`;
 
   return (
     <>
@@ -47,8 +49,6 @@ const TasterDetailItem = React.memo(({ taster }) => {
         parentView="taster"
         isLoading={false}
       />
-
-
     </>
   );
 });

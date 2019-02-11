@@ -5,11 +5,12 @@ import {
   shape,
   string,
 } from 'prop-types';
-import { slugify } from '../../util';
+import { slugify, CLOUDINARY_WHISKIES_BASE_URL } from '../../util';
 
 const WhiskyListItem = React.memo(({ whisky, parentView }) => {
-  const imageSrc = require(`../../assets/images/whiskies/${whisky.id}.jpg`);
+  // const imageSrc = require(`../../assets/images/whiskies/${whisky.id}.jpg`);
   // const imageSrc = `/dist/src/assets/images/whiskies/${whisky.id}.jpg`;
+  const imageSrc = `${CLOUDINARY_WHISKIES_BASE_URL}${whisky.id}.jpg`;
 
   return (
     <Link

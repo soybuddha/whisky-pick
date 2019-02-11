@@ -7,12 +7,16 @@ import {
   shape,
   string,
 } from 'prop-types';
+import { CLOUDINARY_WHISKIES_BASE_URL } from '../../util';
 import Loading from '../common/Loading';
 import BackButton from '../common/BackButton';
+//import api from '../../api';
+import WhiskyRatingsChart from './WhiskyRatingsChart';
 
 const WhiskyDetailItem = React.memo(({ whisky }) => {
-  const imageSrc = require(`../../assets/images/whiskies/${whisky.id}.jpg`);
+  // const imageSrc = require(`../../assets/images/whiskies/${whisky.id}.jpg`);
   // const imageSrc = `/dist/src/assets/images/whiskies/${whisky.id}.jpg`;
+  const imageSrc = `${CLOUDINARY_WHISKIES_BASE_URL}${whisky.id}.jpg`;
 
   return (
     <>
@@ -33,6 +37,8 @@ const WhiskyDetailItem = React.memo(({ whisky }) => {
         <h3>{whisky.name}</h3>
         <p>{whisky.description}</p>
         <BackButton />
+        {/*<WhiskyRatingsChart ratings={api.formatRatingsForChart(whisky.ratings)} />*/}
+        <WhiskyRatingsChart ratings={whisky.ratings} />
       </div>
 
       <h4>

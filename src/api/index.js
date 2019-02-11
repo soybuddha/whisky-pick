@@ -112,6 +112,13 @@ async function getTasterById(id, tasters, whiskies) {
   }
 }
 
+function formatRatingsForChart(ratings) {
+  return {
+    labels: ratings.map(rating => rating.name),
+    series: [ratings.map(rating => rating.score)],
+  };
+}
+
 export default {
   getWhiskies,
   getTasters,
@@ -120,4 +127,5 @@ export default {
   filterWhiskiesByProfile,
   getWhiskyById,
   getTasterById,
+  formatRatingsForChart,
 };
