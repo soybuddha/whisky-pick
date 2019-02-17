@@ -10,7 +10,6 @@ import {
 import { CLOUDINARY_WHISKIES_BASE_URL } from '../../util';
 import Loading from '../common/Loading';
 import BackButton from '../common/BackButton';
-//import api from '../../api';
 import WhiskyRatingsChart from './WhiskyRatingsChart';
 
 const WhiskyDetailItem = React.memo(({ whisky }) => {
@@ -37,8 +36,25 @@ const WhiskyDetailItem = React.memo(({ whisky }) => {
         <h3>{whisky.name}</h3>
         <p>{whisky.description}</p>
         <BackButton />
-        {/*<WhiskyRatingsChart ratings={api.formatRatingsForChart(whisky.ratings)} />*/}
-        <WhiskyRatingsChart ratings={whisky.ratings} />
+        <WhiskyRatingsChart
+          ratings={whisky.ratings}
+          chartHeight={246}
+          padding={30}
+          outerPadding={30}
+          textColor="#888888"
+          textSize={10}
+          axisLinesStrokeColor="#454545"
+          axisLinesStrokeWidth={1}
+          gridLinesStrokeColor="#454545"
+          gridLinesStrokeWidth={1}
+          gridLinesStrokeDasharray
+          gridLinesStrokeDasharrayWidth={2}
+          circleRadius={8}
+          circleColor="#FFBE00"
+          connectingLines
+          connectingLinesStrokeColor="#FFBE00"
+          connectingLinesStrokeWidth={2}
+        />
       </div>
 
       <h4>
@@ -77,18 +93,18 @@ const WhiskyDetailItem = React.memo(({ whisky }) => {
 WhiskyDetailItem.propTypes = {
   whisky: shape({
     age: number.isRequired,
-    average_rating: number.isRequired, //
-    brand: string.isRequired, //
-    description: string.isRequired, //
+    average_rating: number.isRequired,
+    brand: string.isRequired,
+    description: string.isRequired,
     event_date: string.isRequired,
-    id: string.isRequired, //
-    name: string.isRequired, //
+    id: string.isRequired,
+    name: string.isRequired,
     origin: string.isRequired,
     price: number.isRequired,
     profiles: array.isRequired,
     ratings: array.isRequired,
     type: string.isRequired,
-    url: string.isRequired, //
+    url: string.isRequired,
   }).isRequired,
 };
 

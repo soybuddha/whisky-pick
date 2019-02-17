@@ -469,104 +469,23 @@ body {
       top: 67px;
     }
 
-    .ratings {
-      height: 276px;
-      width: 100%;
-      position: relative;
-      $chartBottomPadding: 20px;
-      padding-top: $chartBottomPadding;
+    .ratings-container {
+      .ratings-circles circle {
+        opacity: 0;
+        animation: animateList .15s $cubicBezier .15s forwards;
+        transition: all .15s $cubicBezier;
 
-      .ratings-x-axis {
-        position: absolute;
-        width: 100%;
-        height: 1px;
-        bottom: $chartBottomPadding;
-        left: 0;
-        border-top: 1px dashed $colorGrayDark;
-      }
-
-      .ratings-y-axis {
-        position: absolute;
-        width: 100%;
-        height: calc(100% - 40px);
-
-        .pct-label {
-          width: 50px;
-          text-align: right;
-        }
-
-        .pct-line {
-          margin-top: -10px;
-          border-top: 1px dashed $colorGrayDark;
+        @for $i from 1 to 20 {
+          &:nth-child(#{$i}) {
+            animation-delay: $i * 0.15s;
+          }
         }
       }
 
-      .ratings-chart {
-        width: calc(100% - 50px);
-        float: right;
-        height: 100%;
-
-        .rating {
-          height: 100%;
-          float: left;
-          position: relative;
+      .ratings-path {
+        path {
           opacity: 0;
-          animation: animateList .35s $cubicBezier .35s forwards;
-          transition: all .35s $cubicBezier;
-
-          @for $i from 1 to 10 {
-            &:nth-child(#{$i}) {
-              animation-delay: $i * 0.15s;
-            }
-          }
-
-          .rating-score {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: calc(100% - 20px);
-
-            .rating-score-line {
-              height: 100%;
-              width: 50%;
-              position: absolute;
-              left: 50%;
-              top: 0;
-              border-left: 1px dashed $colorGrayDark;
-            }
-
-            .rating-score-point-container {
-              position: absolute;
-              left: 0;
-              bottom: 0;
-              width: $chartBottomPadding;
-              left: 50%;
-
-              .rating-score-point {
-                background: $colorGradientYellow;
-                position: absolute;
-                top: -10px;
-                left: -10px;
-                width: $chartBottomPadding;
-                height: $chartBottomPadding;
-                border-radius: 50%;
-              }
-            }
-          }
-
-          .rating-name {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: $chartBottomPadding;
-            line-height: $chartBottomPadding;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 100%;
-            text-align: center;
-          }
+          animation: fadeIn 1.25s $cubicBezier 1.25s forwards;
         }
       }
     }
