@@ -25,7 +25,7 @@ class RatingComparison extends React.Component {
         inView: true,
       });
     }
-  };
+  }
 
   render() {
     const { favorites } = this.props;
