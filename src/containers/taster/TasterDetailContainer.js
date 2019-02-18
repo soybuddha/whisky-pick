@@ -21,32 +21,43 @@ class TasterDetailContainer extends React.Component {
   }
 
   componentDidMount() {
+    const {
+      allTasters,
+      allWhiskies,
+      fetchTasters,
+      fetchTasterById,
+      fetchWhiskies,
+    } = this.props;
     const { tasterId } = this.props.match.params;
-    const { allTasters, allWhiskies } = this.props;
 
     if (allTasters.length && allWhiskies.length) {
-      this.props.fetchTasterById(tasterId, allTasters, allWhiskies).then(() => {
+      fetchTasterById(tasterId, allTasters, allWhiskies).then(() => {
         this.setState({ isLoading: false });
       }).catch(err => err);
       return;
     }
 
     Promise.all([
-      this.props.fetchTasters(),
-      this.props.fetchWhiskies(),
+      fetchTasters(),
+      fetchWhiskies(),
     ])
-      .then((responses) => {
-        this.props.fetchTasterById(tasterId, responses[0], responses[1]).then(() => {
+      .then(response => {
+        const [tasters, whiskies] = response;
+
+        fetchTasterById(tasterId, tasters, whiskies).then(() => {
           this.setState({ isLoading: false });
         });
       }).catch(err => err);
   }
 
   render() {
+    const { isLoading } = this.state;
+    const { selectedTaster } = this.props;
+
     return (
       <TasterDetail
-        isLoading={this.state.isLoading}
-        taster={this.props.selectedTaster}
+        isLoading={isLoading}
+        taster={selectedTaster}
       />
     );
   }

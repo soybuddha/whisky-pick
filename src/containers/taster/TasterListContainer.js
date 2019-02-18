@@ -11,23 +11,26 @@ class TasterListContainer extends React.Component {
   }
 
   componentDidMount() {
-    const { allTasters } = this.props;
+    const { allTasters, fetchTasters } = this.props;
 
     if (allTasters.length) {
       this.setState({ isLoading: false });
       return;
     }
 
-    this.props.fetchTasters().then(() => {
+    fetchTasters().then(() => {
       this.setState({ isLoading: false });
     }).catch(err => err);
   }
 
   render() {
+    const { isLoading } = this.state;
+    const { allTasters } = this.props;
+
     return (
       <TasterList
-        isLoading={this.state.isLoading}
-        tasters={this.props.allTasters}
+        isLoading={isLoading}
+        tasters={allTasters}
       />
     );
   }

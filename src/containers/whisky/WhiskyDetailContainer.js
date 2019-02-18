@@ -20,29 +20,36 @@ class WhiskyDetailContainer extends React.Component {
   }
 
   componentDidMount() {
-    const { allWhiskies } = this.props;
+    const {
+      allWhiskies,
+      fetchWhiskyById,
+      fetchWhiskies,
+    } = this.props;
     const { distilleryId, whiskyId } = this.props.match.params;
     const id = `${distilleryId}-${whiskyId}`;
 
     if (allWhiskies.length) {
-      this.props.fetchWhiskyById(id, allWhiskies).then(() => {
+      fetchWhiskyById(id, allWhiskies).then(() => {
         this.setState({ isLoading: false });
       }).catch(err => err);
       return;
     }
 
-    this.props.fetchWhiskies().then(whiskies => {
-      this.props.fetchWhiskyById(id, whiskies).then(() => {
+    fetchWhiskies().then(whiskies => {
+      fetchWhiskyById(id, whiskies).then(() => {
         this.setState({ isLoading: false });
       });
     }).catch(err => err);
   }
 
   render() {
+    const { isLoading } = this.state;
+    const { selectedWhisky } = this.props;
+
     return (
       <WhiskyDetail
-        isLoading={this.state.isLoading}
-        whisky={this.props.selectedWhisky}
+        isLoading={isLoading}
+        whisky={selectedWhisky}
       />
     );
   }

@@ -11,7 +11,12 @@ class HomeContainer extends React.Component {
   }
 
   componentDidMount() {
-    const { favoriteWhiskies, allWhiskies } = this.props;
+    const {
+      favoriteWhiskies,
+      allWhiskies,
+      fetchWhiskies,
+      fetchFavoriteWhiskies,
+    } = this.props;
 
     if (Object.keys(favoriteWhiskies).length !== 0) {
       this.setState({ isLoading: false });
@@ -19,24 +24,27 @@ class HomeContainer extends React.Component {
     }
 
     if (allWhiskies.length) {
-      this.props.fetchFavoriteWhiskies(allWhiskies).then(() => {
+      fetchFavoriteWhiskies(allWhiskies).then(() => {
         this.setState({ isLoading: false });
       }).catch(err => err);
       return;
     }
 
-    this.props.fetchWhiskies().then(whiskies => {
-      this.props.fetchFavoriteWhiskies(whiskies).then(() => {
+    fetchWhiskies().then(whiskies => {
+      fetchFavoriteWhiskies(whiskies).then(() => {
         this.setState({ isLoading: false });
       });
     }).catch(err => err);
   }
 
   render() {
+    const { isLoading } = this.state;
+    const { favoriteWhiskies } = this.props;
+
     return (
       <Home
-        favorites={this.props.favoriteWhiskies}
-        isLoading={this.state.isLoading}
+        isLoading={isLoading}
+        favorites={favoriteWhiskies}
       />
     );
   }

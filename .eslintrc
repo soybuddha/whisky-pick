@@ -18,6 +18,7 @@
     "no-console": "off",
     "no-underscore-dangle": "off",
     "no-param-reassign": ["error", { "props": false }],
+    "no-shadow": "off",
     "react/destructuring-assignment": [<enabled>, "always", { "ignoreClassFields": "true" }],
     "react/forbid-prop-types": [0],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

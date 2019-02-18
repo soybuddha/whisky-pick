@@ -11,23 +11,26 @@ class WhiskyListContainer extends React.Component {
   }
 
   componentDidMount() {
-    const { transducedWhiskies } = this.props;
+    const { transducedWhiskies, fetchWhiskies } = this.props;
 
     if (transducedWhiskies.length) {
       this.setState({ isLoading: false });
       return;
     }
 
-    this.props.fetchWhiskies().then(() => {
+    fetchWhiskies().then(() => {
       this.setState({ isLoading: false });
     }).catch(err => err);
   }
 
   render() {
+    const { isLoading } = this.state;
+    const { transducedWhiskies } = this.props;
+
     return (
       <WhiskyList
-        whiskies={this.props.transducedWhiskies}
-        isLoading={this.state.isLoading}
+        isLoading={isLoading}
+        whiskies={transducedWhiskies}
       />
     );
   }
