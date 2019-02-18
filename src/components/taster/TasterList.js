@@ -7,26 +7,24 @@ import {
   shape,
   string,
 } from 'prop-types';
-import { CLOUDINARY_TASTERS_BASE_URL } from '../../util';
+import { Image } from 'cloudinary-react';
 import ScrollToTop from '../common/ScrollToTop';
 import Loading from '../common/Loading';
 
 const TasterListItem = React.memo(({ taster }) => {
-  // const imageSrc = require(`../../assets/images/tasters/${taster.id}.jpg`);
-  // const imageSrc = `/dist/src/assets/images/tasters/${taster.id}.jpg`;
-  const imageSrc = `${CLOUDINARY_TASTERS_BASE_URL}${taster.id}.jpg`;
-
   return (
     <Link
       to={`/tasters/${taster.id}`}
       className="taster-list-item container-list-item"
     >
-      <img
-        src={imageSrc}
+      <Image
+        cloudName="kevinnayar"
+        publicId={`tasters/${taster.id}.jpg`}
+        width="300"
+        crop="scale"
         alt={`${taster.name}`}
         className="container-image"
       />
-
       <div className="container-detail">
         <h2>{taster.name}</h2>
         <h3>

@@ -12,12 +12,7 @@ export function unslugify(str) {
   return str.split('-').map(s => capitalizeFirstLetter(s)).join(' ');
 }
 
-export const CLOUDINARY_WHISKIES_BASE_URL = 'https://res.cloudinary.com/kevinnayar/image/upload/v1549831642/whiskies/';
-export const CLOUDINARY_TASTERS_BASE_URL = 'https://res.cloudinary.com/kevinnayar/image/upload/v1549831499/tasters/';
-
 export default {
   slugify,
   unslugify,
-  CLOUDINARY_WHISKIES_BASE_URL,
-  CLOUDINARY_TASTERS_BASE_URL,
 };

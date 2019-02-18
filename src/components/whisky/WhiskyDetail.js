@@ -7,16 +7,12 @@ import {
   shape,
   string,
 } from 'prop-types';
-import { CLOUDINARY_WHISKIES_BASE_URL } from '../../util';
+import { Image } from 'cloudinary-react';
 import Loading from '../common/Loading';
 import BackButton from '../common/BackButton';
 import WhiskyRatingsChart from './WhiskyRatingsChart';
 
 const WhiskyDetailItem = React.memo(({ whisky }) => {
-  // const imageSrc = require(`../../assets/images/whiskies/${whisky.id}.jpg`);
-  // const imageSrc = `/dist/src/assets/images/whiskies/${whisky.id}.jpg`;
-  const imageSrc = `${CLOUDINARY_WHISKIES_BASE_URL}${whisky.id}.jpg`;
-
   return (
     <>
       <a
@@ -24,8 +20,11 @@ const WhiskyDetailItem = React.memo(({ whisky }) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img
-          src={imageSrc}
+        <Image
+          cloudName="kevinnayar"
+          publicId={`whiskies/${whisky.id}.jpg`}
+          width="460"
+          crop="scale"
           alt={`${whisky.brand} - ${whisky.name}`}
           className="whisky-detail-image"
         />
