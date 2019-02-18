@@ -224,8 +224,12 @@ body {
         width: 100%;
         background: $colorGrayLight;
         opacity: 0;
-        animation: growRight .7s $cubicBezier .35s forwards;
-        transition: all .7s $cubicBezier;
+
+        &.visible {
+          opacity: 0;
+          animation: growRight .7s $cubicBezier .35s forwards;
+          transition: all .7s $cubicBezier;
+        }
       }
 
       .comparison-inner {
