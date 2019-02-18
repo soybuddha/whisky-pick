@@ -259,9 +259,6 @@ body {
       width: 17%;
       margin: 1.5%;
       float: left;
-      opacity: 0;
-      animation: animateList 0.35s $cubicBezier 0.35s forwards;
-      transition: all 0.35s $cubicBezier;
 
       >h3 {
         font-family: $fontPrimary;
@@ -277,6 +274,7 @@ body {
         padding: 20px;
         text-align: center;
         color: $colorWhite;
+        opacity: 0;
 
         h4 {
           font-family: $fontPrimary;
@@ -294,6 +292,13 @@ body {
           border-bottom: 1px solid $colorWhite;
         }
       }
+    }
+  }
+
+  &.visible {
+    .age-price-comparison-detail {
+      animation: animateList 0.5s $cubicBezier 0.5s forwards;
+      transition: all 0.5s $cubicBezier;
 
       @for $i from 1 to 10 {
         &:nth-child(#{$i}) {
