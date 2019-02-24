@@ -676,6 +676,14 @@ body {
     height: 40px;
     width: 100%;
     padding: 5px 10px;
+    outline: none;
+    border: 4px solid $colorWhite;
+    transition: all 0.5s $cubicBezier;
+
+    &:focus {
+      border: 4px solid $colorYellow;
+      transition: all 0.5s $cubicBezier;
+    }
   }
 }
 

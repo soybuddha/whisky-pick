@@ -9,7 +9,7 @@ import {
 } from '../../store/actions';
 import WhiskyFilters from '../../components/whisky/WhiskyFilters';
 
-class WhiskyTransducersContainer extends React.Component {
+class WhiskyFiltersContainer extends React.Component {
   state = {
     isLoading: true,
   }
@@ -65,7 +65,7 @@ const mapStateToProps = state => {
   };
 };
 
-WhiskyTransducersContainer.propTypes = {
+WhiskyFiltersContainer.propTypes = {
   allWhiskies: array.isRequired,
   profiles: array.isRequired,
   types: array.isRequired,
@@ -78,4 +78,4 @@ export default withRouter(connect(mapStateToProps, {
   fetchProfiles,
   fetchTypes,
   fetchFilteredWhiskies,
-})(WhiskyTransducersContainer));
+})(WhiskyFiltersContainer));

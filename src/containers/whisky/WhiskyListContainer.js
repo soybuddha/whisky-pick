@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { array, func } from 'prop-types';
 import { fetchWhiskies } from '../../store/actions';
-import WhiskyTransducers from './WhiskyTransducersContainer';
+import WhiskyFilters from './WhiskyFiltersContainer';
 import WhiskySearch from './WhiskySearchContainer';
 import WhiskyList from '../../components/whisky/WhiskyList';
 
@@ -32,7 +32,7 @@ class WhiskyListContainer extends React.Component {
 
     return (
       <>
-        <WhiskyTransducers />
+        <WhiskyFilters />
         <WhiskySearch whiskyNames={whiskyNames} />
         <WhiskyList
           isLoading={isLoading}
