@@ -52,42 +52,6 @@ export function fetchFavoriteWhiskies(whiskies) {
   };
 }
 
-export const FILTER_WHISKIES_BY_TYPE = 'FILTER_WHISKIES_BY_TYPE';
-export function fetchFilteredWhiskiesByType(types, whiskies) {
-  return (dispatch, getState, api) => {
-    return api
-      .filterWhiskiesByType(types, whiskies)
-      .then(payload => {
-        dispatch({
-          type: FILTER_WHISKIES_BY_TYPE,
-          payload,
-        });
-        return payload;
-      })
-      .catch(err => {
-        throw new Error(err);
-      });
-  };
-}
-
-export const FILTER_WHISKIES_BY_PROFILE = 'FILTER_WHISKIES_BY_PROFILE';
-export function fetchFilteredWhiskiesByProfile(profiles, whiskies) {
-  return (dispatch, getState, api) => {
-    return api
-      .filterWhiskiesByProfile(profiles, whiskies)
-      .then(payload => {
-        dispatch({
-          type: FILTER_WHISKIES_BY_PROFILE,
-          payload,
-        });
-        return payload;
-      })
-      .catch(err => {
-        throw new Error(err);
-      });
-  };
-}
-
 export const FETCH_TASTERS = 'FETCH_TASTERS';
 export function fetchTasters() {
   return (dispatch, getState, api) => {
@@ -114,6 +78,78 @@ export function fetchTasterById(id, tasters, whiskies) {
       .then(payload => {
         dispatch({
           type: FETCH_TASTER_BY_ID,
+          payload,
+        });
+        return payload;
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  };
+}
+
+export const FETCH_PROFILES = 'FETCH_PROFILES';
+export function fetchProfiles() {
+  return (dispatch, getState, api) => {
+    return api
+      .getProfiles()
+      .then(payload => {
+        dispatch({
+          type: FETCH_PROFILES,
+          payload,
+        });
+        return payload;
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  };
+}
+
+export const FETCH_TYPES = 'FETCH_TYPES';
+export function fetchTypes() {
+  return (dispatch, getState, api) => {
+    return api
+      .getTypes()
+      .then(payload => {
+        dispatch({
+          type: FETCH_TYPES,
+          payload,
+        });
+        return payload;
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  };
+}
+
+export const FILTER_WHISKIES = 'FILTER_WHISKIES';
+export function fetchFilteredWhiskies(profiles, types, whiskies) {
+  return (dispatch, getState, api) => {
+    return api
+      .filterWhiskies(profiles, types, whiskies)
+      .then(payload => {
+        dispatch({
+          type: FILTER_WHISKIES,
+          payload,
+        });
+        return payload;
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  };
+}
+
+export const SEARCH_MATCHED_WHISKIES = 'SEARCH_MATCHED_WHISKIES';
+export function fetchSearchResults(matches, whiskies) {
+  return (dispatch, getState, api) => {
+    return api
+      .getSearchResults(matches, whiskies)
+      .then(payload => {
+        dispatch({
+          type: SEARCH_MATCHED_WHISKIES,
           payload,
         });
         return payload;

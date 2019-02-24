@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import WhiskyReducer from './WhiskyReducer';
+import FilterReducer from './FilterReducer';
 import TasterReducer from './TasterReducer';
+import WhiskyReducer from './WhiskyReducer';
 
 export default combineReducers({
-  whiskies: WhiskyReducer,
+  filters: FilterReducer,
   tasters: TasterReducer,
+  whiskies: WhiskyReducer,
 });

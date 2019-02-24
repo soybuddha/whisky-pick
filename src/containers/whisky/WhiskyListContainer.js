@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { array, func } from 'prop-types';
 import { fetchWhiskies } from '../../store/actions';
+import WhiskyTransducers from './WhiskyTransducersContainer';
+import WhiskySearch from './WhiskySearchContainer';
 import WhiskyList from '../../components/whisky/WhiskyList';
 
 class WhiskyListContainer extends React.Component {
@@ -25,13 +27,18 @@ class WhiskyListContainer extends React.Component {
 
   render() {
     const { isLoading } = this.state;
-    const { transducedWhiskies } = this.props;
+    const { allWhiskies, transducedWhiskies } = this.props;
+    const whiskyNames = allWhiskies.map(w => `${w.brand} ${w.name}`);
 
     return (
-      <WhiskyList
-        isLoading={isLoading}
-        whiskies={transducedWhiskies}
-      />
+      <>
+        <WhiskyTransducers />
+        <WhiskySearch whiskyNames={whiskyNames} />
+        <WhiskyList
+          isLoading={isLoading}
+          whiskies={transducedWhiskies}
+        />
+      </>
     );
   }
 }
@@ -44,6 +51,7 @@ const mapStateToProps = state => {
 };
 
 WhiskyListContainer.propTypes = {
+  allWhiskies: array.isRequired,
   transducedWhiskies: array.isRequired,
   fetchWhiskies: func.isRequired,
 };

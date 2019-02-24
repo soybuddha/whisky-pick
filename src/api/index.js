@@ -4,6 +4,7 @@ import { slugify } from '../util';
 const WHISKIES_URL = '/src/assets/data/whiskies.json';
 const TASTERS_URL = '/src/assets/data/tasters.json';
 const TYPES_URL = '/src/assets/data/types.json';
+const PROFILES_URL = '/src/assets/data/profiles.json';
 
 function getRequest(url) {
   return axios.get(url);
@@ -39,6 +40,16 @@ async function getTypes() {
   }
 }
 
+async function getProfiles() {
+  try {
+    const types = await getRequest(PROFILES_URL);
+    return types.data;
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
+}
+
 async function getFavoriteWhiskies(whiskies) {
   try {
     const whiskyTypes = await getTypes();
@@ -64,16 +75,14 @@ async function getFavoriteWhiskies(whiskies) {
   }
 }
 
-async function filterWhiskiesByType(filters, whiskies) {
-  const filteredWhiskies = await whiskies.filter(whisky => filters.includes(whisky.type));
-  return filteredWhiskies;
-}
-
-async function filterWhiskiesByProfile(filters, whiskies) {
-  const filteredWhiskies = await whiskies.filter(whisky => {
-    const allProfiles = whisky.profiles.map(p => p);
-    return allProfiles.some(profile => filters.includes(profile));
+async function filterWhiskies(profiles, types, whiskies) {
+  let filteredWhiskies = await whiskies.filter(whisky => {
+    const currentProfiles = whisky.profiles.map(p => p);
+    return currentProfiles.every(profile => profiles.includes(profile));
   });
+
+  filteredWhiskies = await filteredWhiskies.filter(whisky => types.includes(whisky.type));
+
   return filteredWhiskies;
 }
 
@@ -112,20 +121,25 @@ async function getTasterById(id, tasters, whiskies) {
   }
 }
 
-function formatRatingsForChart(ratings) {
-  return {
-    labels: ratings.map(rating => rating.name),
-    series: [ratings.map(rating => rating.score)],
-  };
+async function getSearchResults(matches, whiskies) {
+  if (matches.length === 0) return whiskies;
+
+  const matchedWhiskies = await whiskies.filter(whisky => {
+    const whiskyName = `${whisky.brand} ${whisky.name}`.toLowerCase();
+    return matches.includes(whiskyName);
+  });
+
+  return matchedWhiskies;
 }
 
 export default {
   getWhiskies,
-  getTasters,
   getFavoriteWhiskies,
-  filterWhiskiesByType,
-  filterWhiskiesByProfile,
   getWhiskyById,
+  getTasters,
   getTasterById,
-  formatRatingsForChart,
+  getProfiles,
+  getTypes,
+  filterWhiskies,
+  getSearchResults,
 };
